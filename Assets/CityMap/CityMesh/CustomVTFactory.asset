@@ -9,8 +9,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 63d97cb1cfb3f1b499c24763afa54873, type: 3}
-  m_Name: CityVTFactory
+  m_Name: CustomVTFactory
   m_EditorClassIdentifier: 
-  _mapId: mapbox.mapbox-streets-v7
+  _mapId: stevenroach7.cj9dmlejy22lq2qls7hk9cib5-59b0a
   Visualizers:
   - {fileID: 11400000, guid: f905db53392b743b0847d71f020f0480, type: 2}

@@ -70,6 +70,8 @@ namespace Mapbox.Unity.MeshGeneration.Factories
 
 		internal override void OnRegistered(UnityTile tile)
 		{
+
+
 			var vectorTile = new VectorTile();
 			tile.AddTile(vectorTile);
 
@@ -78,6 +80,7 @@ namespace Mapbox.Unity.MeshGeneration.Factories
 			{
 				if (vectorTile.HasError)
 				{
+				
 					tile.VectorDataState = TilePropertyState.Error;
 					Progress--;
 					return;
@@ -101,6 +104,7 @@ namespace Mapbox.Unity.MeshGeneration.Factories
 
 		internal override void OnUnregistered(UnityTile tile)
 		{
+
 			// We are no longer interested in this tile's notifications.
 			tile.OnHeightDataChanged -= DataChangedHandler;
 			tile.OnRasterDataChanged -= DataChangedHandler;
@@ -122,6 +126,7 @@ namespace Mapbox.Unity.MeshGeneration.Factories
 		/// <param name="e"></param>
 		private void CreateMeshes(UnityTile tile)
 		{
+
 			tile.OnHeightDataChanged -= DataChangedHandler;
 			tile.OnRasterDataChanged -= DataChangedHandler;
 
@@ -129,24 +134,25 @@ namespace Mapbox.Unity.MeshGeneration.Factories
 
 			// TODO: move unitytile state registrations to layer visualizers. Not everyone is interested in this data
 			// and we should not wait for it here!
+
 			foreach (var layerName in _cachedData[tile].Data.LayerNames())
 			{
-				if (_layerBuilder.ContainsKey(layerName))
-				{
-					foreach (var builder in _layerBuilder[layerName])
-					{
-						if (builder.Active)
-						{
-							builder.Create(_cachedData[tile].Data.GetLayer(layerName), tile);
+
+				if (_layerBuilder.ContainsKey (layerName)) {
+					
+					foreach (var builder in _layerBuilder[layerName]) {
+						
+						if (builder.Active) {
+							builder.Create (_cachedData [tile].Data.GetLayer (layerName), tile);
 						}
 					}
 				}
-			}
 
 			tile.VectorDataState = TilePropertyState.Loaded;
 			Progress--;
 
 			_cachedData.Remove(tile);
+			}
 		}
 	}
 }
