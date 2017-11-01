@@ -13,6 +13,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Factories:
   - {fileID: 11400000, guid: 688f4b8087ee543579ba3b091adb3ddd, type: 2}
-  - {fileID: 11400000, guid: 16a68487b525f482aa832d22b8ca8a6c, type: 2}
+  - {fileID: 11400000, guid: 26b1d8d6ac52a47ef98a955902543b72, type: 2}
   - {fileID: 11400000, guid: 30c488acff2024446aca6e03e11ad1b3, type: 2}
   _loadingTexture: {fileID: 0}
