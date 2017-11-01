@@ -13,11 +13,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _mapIdType: 1
   _customStyle:
-    Name: 
-    Id: mapbox://styles/stevenroach7/cj8u9g9epe2012slaahrpsf2b
-    Modified: 
+    Name: ExtrusionRateofChange-copy
+    Id: mapbox://styles/stevenroach7/cj97tdpxq0wjp2smy3p9r7eix
+    Modified: 2017-10-26T01:52:51.461Z
     UserName: stevenroach7
-  _mapId: mapbox://styles/stevenroach7/cj8u9g9epe2012slaahrpsf2b
+  _mapId: mapbox://styles/stevenroach7/cj97tdpxq0wjp2smy3p9r7eix
   _useCompression: 1
   _useMipMap: 0
   _useRetina: 0

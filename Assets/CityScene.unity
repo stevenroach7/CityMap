@@ -239,7 +239,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &768518555
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -251,9 +251,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7d7ff8ed3b76a4ee5a451d64a5393e3f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _west: 1
-  _north: 3
-  _east: 1
+  _west: 3
+  _north: 5
+  _east: 5
   _south: 3
 --- !u!114 &768518556
 MonoBehaviour:
@@ -263,15 +263,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 768518554}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cd961b1c9541a4cee99686069ecce852, type: 3}
+  m_Script: {fileID: 11500000, guid: 58cb9a85be6f84591938618fa232ce85, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _initializeOnStart: 1
   _latitudeLongitudeString: 47.6038, -122.3301
-  _zoom: 13
+  _zoom: 16
   _root: {fileID: 768518557}
   _tileProvider: {fileID: 768518555}
   _mapVisualizer: {fileID: 11400000, guid: cc36e54c836294102b201d1b72768cfa, type: 2}
-  _unityTileSize: 0.34
+  _unityTileSize: 10
   _snapMapHeightToZero: 1
 --- !u!4 &768518557
 Transform:
@@ -314,8 +315,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7d7ff8ed3b76a4ee5a451d64a5393e3f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _west: 1
-  _north: 1
+  _west: 2
+  _north: 2
   _east: 2
   _south: 2
 --- !u!114 &1245003651
@@ -326,10 +327,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1245003649}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cd961b1c9541a4cee99686069ecce852, type: 3}
+  m_Script: {fileID: 11500000, guid: 58cb9a85be6f84591938618fa232ce85, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _latitudeLongitudeString: 44.956227, -93.146553
+  _initializeOnStart: 1
+  _latitudeLongitudeString: 44.9504, -93.1015
   _zoom: 13
   _root: {fileID: 1245003652}
   _tileProvider: {fileID: 1245003650}
@@ -349,6 +351,70 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1254524991
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1254524993}
+  - component: {fileID: 1254524992}
+  - component: {fileID: 1254524994}
+  m_Layer: 0
+  m_Name: DetroitMap
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!114 &1254524992
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1254524991}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 58cb9a85be6f84591938618fa232ce85, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _initializeOnStart: 1
+  _latitudeLongitudeString: 42.3487, -83.0567
+  _zoom: 13
+  _root: {fileID: 1254524993}
+  _tileProvider: {fileID: 1254524994}
+  _mapVisualizer: {fileID: 11400000, guid: cc36e54c836294102b201d1b72768cfa, type: 2}
+  _unityTileSize: 0.34
+  _snapMapHeightToZero: 1
+--- !u!4 &1254524993
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1254524991}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 2, y: -600, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1254524994
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1254524991}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7d7ff8ed3b76a4ee5a451d64a5393e3f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _west: 2
+  _north: 2
+  _east: 2
+  _south: 2
 --- !u!1 &1322338269
 GameObject:
   m_ObjectHideFlags: 0
@@ -376,69 +442,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 4
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1329946604
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 1329946607}
-  - component: {fileID: 1329946606}
-  - component: {fileID: 1329946605}
-  m_Layer: 0
-  m_Name: DetroitMap
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1329946605
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1329946604}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7d7ff8ed3b76a4ee5a451d64a5393e3f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _west: 1
-  _north: 1
-  _east: 1
-  _south: 1
---- !u!114 &1329946606
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1329946604}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cd961b1c9541a4cee99686069ecce852, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _latitudeLongitudeString: 42.3487, -83.0567
-  _zoom: 13
-  _root: {fileID: 1329946607}
-  _tileProvider: {fileID: 1329946605}
-  _mapVisualizer: {fileID: 11400000, guid: cc36e54c836294102b201d1b72768cfa, type: 2}
-  _unityTileSize: 0.34
-  _snapMapHeightToZero: 1
---- !u!4 &1329946607
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1329946604}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2, y: -600, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1428947273
 GameObject:

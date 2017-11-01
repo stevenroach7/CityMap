@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d2a700db9e212496897fb5ee12b2fdcb, type: 3}
+  m_Name: StyledCityLayer
+  m_EditorClassIdentifier: 
+  _mapId: mapbox://styles/stevenroach7/cj97r91lc0ujg2smyrshft1pi
+  _optimizedStyle:
+    Name: ExtrusionRateofChange
+    Id: mapbox://styles/stevenroach7/cj97r91lc0ujg2smyrshft1pi
+    Modified: 2017-10-26T01:02:56.052Z
+    UserName: stevenroach7
+  Visualizers:
+  - {fileID: 11400000, guid: f905db53392b743b0847d71f020f0480, type: 2}
+  - {fileID: 11400000, guid: 69e43c5ee5f5f6b46a12bf3f1ba27039, type: 2}
+  - {fileID: 11400000, guid: 8bb5f05d69ceb45c78f8529f9650210c, type: 2}

@@ -11,6 +11,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 63d97cb1cfb3f1b499c24763afa54873, type: 3}
   m_Name: CityVTFactory
   m_EditorClassIdentifier: 
-  _mapId: mapbox.mapbox-streets-v7
+  _mapId: mapbox://styles/stevenroach7/cj97tdpxq0wjp2smy3p9r7eix
   Visualizers:
   - {fileID: 11400000, guid: f905db53392b743b0847d71f020f0480, type: 2}
