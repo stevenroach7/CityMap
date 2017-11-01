@@ -36,6 +36,17 @@ namespace Mapbox.Unity.MeshGeneration.Modifiers
 		[Tooltip("Create side walls from calculated height down to terrain level. Suggested for buildings, not suggested for roads.")]
 		private bool _createSideWalls = true;
 
+		[SerializeField]
+		private string _heightDataKey = "height";
+
+		[SerializeField]
+		private float _heightMultiplier = 1;
+
+		// TODO: Keep this? Figure out where blotching is coming from. 
+		[SerializeField]
+		private string _cityString;
+
+
         public override ModifierType Type { get { return ModifierType.Preprocess; } }
 
 		public override void Run(VectorFeatureUnity feature, MeshData md, float scale)
@@ -49,6 +60,18 @@ namespace Mapbox.Unity.MeshGeneration.Modifiers
             if (md.Vertices.Count == 0 || feature == null || feature.Points.Count < 1)
                 return;
 
+			// Make sure feature is in desired city.
+			if (!feature.Properties.ContainsKey("City")) 
+			{
+				return;
+			} 
+			else
+			{
+				if (!feature.Properties["City"].Equals(_cityString)) {
+					return;
+				}
+			}
+
 			if (tile != null)
 				_scale = tile.TileScale;
 
@@ -56,11 +79,12 @@ namespace Mapbox.Unity.MeshGeneration.Modifiers
             float hf = _height * _scale;
             if (!_forceHeight)
             {
-                if (feature.Properties.ContainsKey("height"))
+				if (feature.Properties.ContainsKey(_heightDataKey))
                 {
-                    if (float.TryParse(feature.Properties["height"].ToString(), out hf))
+					if (float.TryParse(feature.Properties[_heightDataKey].ToString(), out hf))
                     {
 						hf *= _scale;
+						hf *= _heightMultiplier;
                         if (feature.Properties.ContainsKey("min_height"))
                         {
                             minHeight = float.Parse(feature.Properties["min_height"].ToString()) * _scale;

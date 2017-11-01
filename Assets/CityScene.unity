@@ -316,7 +316,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _west: 2
-  _north: 2
+  _north: 1
   _east: 2
   _south: 2
 --- !u!114 &1245003651
@@ -336,7 +336,7 @@ MonoBehaviour:
   _root: {fileID: 1245003652}
   _tileProvider: {fileID: 1245003650}
   _mapVisualizer: {fileID: 11400000, guid: cc36e54c836294102b201d1b72768cfa, type: 2}
-  _unityTileSize: 0.34
+  _unityTileSize: 0.1
   _snapMapHeightToZero: 1
 --- !u!4 &1245003652
 Transform:
