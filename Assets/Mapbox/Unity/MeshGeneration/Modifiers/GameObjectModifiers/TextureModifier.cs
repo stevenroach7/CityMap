@@ -23,23 +23,63 @@ namespace Mapbox.Unity.MeshGeneration.Modifiers
         [SerializeField]
         private Material[] _sideMaterials;
 
+//		public override void Run(FeatureBehaviour fb, UnityTile tile)
+//        {
+//			var _meshRenderer = fb.gameObject.AddComponent<MeshRenderer>();
+//			if (_textureSides && _sideMaterials.Length > 0)
+//			{
+//				_meshRenderer.materials = new Material[2]
+//				{
+//				_topMaterials[Random.Range(0, _topMaterials.Length)],
+//				_sideMaterials[Random.Range(0, _sideMaterials.Length)]
+//				};
+//			}
+//			else if (_textureTop)
+//			{
+//				_meshRenderer.materials = new Material[1]
+//			   {
+//				_topMaterials[Random.Range(0, _topMaterials.Length)]
+//			   };
+//			}
+//
+//			if (_useSatelliteTexture)
+//			{
+//				var _tile = fb.gameObject.GetComponent<UnityTile>();
+//				var t = fb.transform;
+//				while (_tile == null && t.parent != null)
+//				{
+//					t = t.parent;
+//					_tile = t.GetComponent<UnityTile>();
+//				}
+//
+//				_meshRenderer.materials[0].mainTexture = _tile.GetRasterData();
+//				_meshRenderer.materials[0].mainTextureScale = new Vector2(1f, 1f);
+//			}
+//
+//
+//			//var ts = fb.gameObject.AddComponent<TextureSelector>();
+//   //         ts.Initialize(fb, _textureTop, _useSatelliteTexture, _topMaterials, _textureSides, _sideMaterials);
+//        }
+
+
+
 		public override void Run(FeatureBehaviour fb, UnityTile tile)
-        {
+		{
 			var _meshRenderer = fb.gameObject.AddComponent<MeshRenderer>();
 			if (_textureSides && _sideMaterials.Length > 0)
 			{
 				_meshRenderer.materials = new Material[2]
 				{
-				_topMaterials[Random.Range(0, _topMaterials.Length)],
-				_sideMaterials[Random.Range(0, _sideMaterials.Length)]
+					_topMaterials[Random.Range(0, _topMaterials.Length)],
+					_sideMaterials[Random.Range(0, _sideMaterials.Length)]
 				};
 			}
 			else if (_textureTop)
 			{
 				_meshRenderer.materials = new Material[1]
-			   {
-				_topMaterials[Random.Range(0, _topMaterials.Length)]
-			   };
+				{
+					_topMaterials[Random.Range(0, _topMaterials.Length)]
+				};
 			}
 
 			if (_useSatelliteTexture)
@@ -58,7 +98,43 @@ namespace Mapbox.Unity.MeshGeneration.Modifiers
 
 
 			//var ts = fb.gameObject.AddComponent<TextureSelector>();
-   //         ts.Initialize(fb, _textureTop, _useSatelliteTexture, _topMaterials, _textureSides, _sideMaterials);
-        }
+			//         ts.Initialize(fb, _textureTop, _useSatelliteTexture, _topMaterials, _textureSides, _sideMaterials);
+		}
+
+
+
+		// Mao Image Factory Code
+//		if (_mapIdType == MapImageType.None)
+//			return;
+//
+//		RasterTile rasterTile;
+//		if (_mapId.StartsWith("mapbox://", StringComparison.Ordinal))
+//		{
+//			rasterTile = _useRetina ? new RetinaRasterTile() : new RasterTile();
+//		}
+//		else
+//		{
+//			rasterTile = _useRetina ? new ClassicRetinaRasterTile() : new ClassicRasterTile();
+//		}
+//
+//		tile.RasterDataState = TilePropertyState.Loading;
+//
+//		tile.AddTile(rasterTile);
+//		Progress++;
+//		rasterTile.Initialize(_fileSource, tile.CanonicalTileId, _mapId, () =>
+//			{
+//				if (rasterTile.HasError)
+//				{
+//					tile.RasterDataState = TilePropertyState.Error;
+//					Progress--;
+//					return;
+//				}
+//
+//				tile.SetRasterData(rasterTile.Data, _useMipMap, _useCompression);
+//				tile.RasterDataState = TilePropertyState.Loaded;
+//				Progress--;
+//			});
+//
+
     }
 }
