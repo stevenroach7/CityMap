@@ -316,7 +316,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _west: 2
-  _north: 2
+  _north: 1
   _east: 2
   _south: 2
 --- !u!114 &1245003651

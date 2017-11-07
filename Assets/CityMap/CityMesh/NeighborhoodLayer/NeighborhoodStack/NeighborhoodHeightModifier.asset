@@ -14,7 +14,7 @@ MonoBehaviour:
   Active: 1
   _flatTops: 0
   _forceHeight: 0
-  _height: 1000
+  _height: 0
   _createSideWalls: 1
   _heightDataKey: 2016-11
   _heightMultiplier: 10

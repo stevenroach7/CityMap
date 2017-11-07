@@ -134,25 +134,22 @@ namespace Mapbox.Unity.MeshGeneration.Factories
 
 			// TODO: move unitytile state registrations to layer visualizers. Not everyone is interested in this data
 			// and we should not wait for it here!
-
-			foreach (var layerName in _cachedData[tile].Data.LayerNames())
+			foreach (var layerName in _cachedData[tile].Data.LayerNames()) 
 			{
-
-				if (_layerBuilder.ContainsKey (layerName)) {
-					
-					foreach (var builder in _layerBuilder[layerName]) {
-						
+				if (_layerBuilder.ContainsKey (layerName)) 
+				{
+					foreach (var builder in _layerBuilder[layerName]) 
+					{
 						if (builder.Active) {
-							builder.Create (_cachedData [tile].Data.GetLayer (layerName), tile);
+							builder.Create(_cachedData[tile].Data.GetLayer(layerName), tile);
 						}
 					}
 				}
-
+			}
 			tile.VectorDataState = TilePropertyState.Loaded;
 			Progress--;
 
 			_cachedData.Remove(tile);
-			}
 		}
 	}
 }
