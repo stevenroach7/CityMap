@@ -23,16 +23,16 @@ namespace Mapbox.Unity.MeshGeneration.Modifiers
         [SerializeField]
         private Material[] _sideMaterials;
 
-//		[SerializeField]
-//		private string _sideColorDataKey = "";
-//
-//		[SerializeField]
-//		private float _minDataValue = 0;
-//
-//
-//		[SerializeField]
-//		private float _maxDataValue = 235;
-//
+		[SerializeField]
+		private string _sideColorDataKey = "";
+
+		[SerializeField]
+		private float _minDataValue = 0;
+
+
+		[SerializeField]
+		private float _maxDataValue = 235;
+
 
 
 		public override void Run(FeatureBehaviour fb, UnityTile tile)
@@ -40,16 +40,16 @@ namespace Mapbox.Unity.MeshGeneration.Modifiers
 			var _meshRenderer = fb.gameObject.AddComponent<MeshRenderer>();
 			if (_textureSides && _sideMaterials.Length > 0)
 			{
-//				float dataValue = 0;
+				float dataValue = _minDataValue;
 				Material sideMaterial = _sideMaterials[Random.Range (0, _sideMaterials.Length)];
-//				if (fb.Properties.ContainsKey(_sideColorDataKey)) {
-//					if (float.TryParse(fb.Properties[_sideColorDataKey].ToString (), out dataValue)) {
-//
-//						float colorPercent = (dataValue - _minDataValue) / (_maxDataValue - _minDataValue);
-//						Color sideMaterialColor = Color.Lerp (Color.white, Color.blue, colorPercent);
-//						sideMaterial.SetColor("_Color", sideMaterialColor);
-//					}
-//				}
+				if (fb.Data.Properties.ContainsKey(_sideColorDataKey)) {
+					if (float.TryParse(fb.Data.Properties[_sideColorDataKey].ToString (), out dataValue)) 
+					{
+						float colorPercent = (dataValue - _minDataValue) / (_maxDataValue - _minDataValue);
+						Color sideMaterialColor = Color.Lerp (Color.white, Color.blue, colorPercent);
+						sideMaterial.SetColor("_Color", sideMaterialColor);
+					}
+				}
 				_meshRenderer.materials = new Material[2]
 				{
 				_topMaterials[Random.Range(0, _topMaterials.Length)],

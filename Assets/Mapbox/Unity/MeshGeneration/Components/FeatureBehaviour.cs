@@ -8,7 +8,11 @@ namespace Mapbox.Unity.MeshGeneration.Components
 	public class FeatureBehaviour : MonoBehaviour
 	{
 		public Transform Transform { get; set; }
-		public VectorFeatureUnity Data;
+		public VectorFeatureUnity Data { get; set; }
+
+		public VectorFeatureUnity GetData() {
+			return Data;
+		}
 
 		public void ShowDebugData()
 		{
