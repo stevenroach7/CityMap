@@ -60,7 +60,6 @@ namespace Mapbox.Unity.MeshGeneration.Interfaces
 		/// <param name="tile"></param>
 		public override void Create(VectorTileLayer layer, UnityTile tile)
 		{
-
 			_container = new GameObject(Key + " Container");
 			_container.transform.SetParent(tile.transform, false);
 
