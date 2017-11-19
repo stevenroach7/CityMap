@@ -52,8 +52,13 @@ namespace Mapbox.Unity.MeshGeneration.Factories
 		{
 			_layerBuilder = new Dictionary<string, List<LayerVisualizerBase>>();
 			_cachedData.Clear();
+
+
+
 			foreach (LayerVisualizerBase factory in Visualizers)
 			{
+				// TODO: Add uiData dictionary to factory here. SR
+
 				if (factory == null)
 					continue;
 

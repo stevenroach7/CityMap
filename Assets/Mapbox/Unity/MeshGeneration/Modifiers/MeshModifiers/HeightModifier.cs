@@ -57,6 +57,7 @@ namespace Mapbox.Unity.MeshGeneration.Modifiers
 
 		public override void Run(VectorFeatureUnity feature, MeshData md, UnityTile tile = null)
 		{
+
 			if (md.Vertices.Count == 0 || feature == null || feature.Points.Count < 1)
 				return;
 
