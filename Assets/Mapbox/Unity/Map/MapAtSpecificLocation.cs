@@ -3,10 +3,11 @@
 	using Mapbox.Unity.Utilities;
 	using Mapbox.Map;
 	using Utils;
+	using System.Collections.Generic;
 
 	public class MapAtSpecificLocation : AbstractMap
 	{
-		public override void Initialize(Vector2d latLon, int zoom)
+		public override void Initialize(Vector2d latLon, int zoom, Dictionary<string, float> uiData = null)
 		{
 			_worldHeightFixed = false;
 			_centerLatitudeLongitude = latLon;

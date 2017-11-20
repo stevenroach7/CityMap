@@ -3,10 +3,11 @@
 	using Mapbox.Unity.Utilities;
 	using Utils;
 	using Mapbox.Map;
+	using System.Collections.Generic;
 
 	public class BasicMap : AbstractMap
 	{
-		public override void Initialize(Vector2d latLon, int zoom)
+		public override void Initialize(Vector2d latLon, int zoom, Dictionary<string, float> uiData = null)
 		{
 			_worldHeightFixed = false;
 			_centerLatitudeLongitude = latLon;

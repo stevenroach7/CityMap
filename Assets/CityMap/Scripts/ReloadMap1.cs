@@ -4,6 +4,7 @@
 	using UnityEngine.UI;
 	using Mapbox.Unity.Map;
 	using UnityEngine;
+	using System.Collections.Generic;
 
 	public class ReloadMap1 : MonoBehaviour
 	{
@@ -12,10 +13,10 @@
 		AbstractMap _map;
 
 //		[SerializeField]
-//		ForwardGeocodeUserInput _forwardGeocoder;
+//		ForwardGeocodeUserInput _forwardGeocoder; // TODO: Use this to switch between cities maybe?
 
 		[SerializeField]
-		Slider _zoomSlider;
+		Slider _timeSlider;
 
 		void Awake()
 		{
@@ -23,19 +24,23 @@
 			_cameraStartPos = _camera.transform.position;
 			_map = FindObjectOfType<AbstractMap>();
 //			_forwardGeocoder.OnGeocoderResponse += ForwardGeocoder_OnGeocoderResponse;
-			_zoomSlider.onValueChanged.AddListener(Reload);
+			_timeSlider.onValueChanged.AddListener(Reload);
 		}
 
 		void ForwardGeocoder_OnGeocoderResponse(ForwardGeocodeResponse response)
 		{
 			_camera.transform.position = _cameraStartPos;
-			_map.Initialize(response.Features[0].Center, (int)_zoomSlider.value);
+			_map.Initialize(response.Features[0].Center, (int)_timeSlider.value);
 		}
 
 		void Reload(float value)
 		{
 			_camera.transform.position = _cameraStartPos;
-			_map.Initialize(_map.CenterLatitudeLongitude, (int)value);
+
+			Dictionary<string, float> uiData = new Dictionary<string, float>();
+			uiData["timeIndex"] = value;
+
+			_map.Initialize(_map.CenterLatitudeLongitude, _map.Zoom, uiData);
 		}
 	}
 }

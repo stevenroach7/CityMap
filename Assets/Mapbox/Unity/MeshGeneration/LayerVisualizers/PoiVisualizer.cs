@@ -7,6 +7,7 @@ namespace Mapbox.Unity.MeshGeneration.Interfaces
     using Mapbox.Unity.MeshGeneration.Components;
     using System;
     using Mapbox.Unity.Utilities;
+	using System.Collections.Generic;
 
 	[Obsolete("PoiVisualer is deprecated. Use regular VectorLayerVisualizer and PrefabModifier.")]
 	[CreateAssetMenu(menuName = "Mapbox/Layer Visualizer/Poi Layer Visualizer - Obsolete (use PrefabModifier)")]
@@ -26,7 +27,7 @@ namespace Mapbox.Unity.MeshGeneration.Interfaces
         [SerializeField]
         private bool _scaleDownWithWorld = true;
 
-        public override void Create(VectorTileLayer layer, UnityTile tile)
+		public override void Create(VectorTileLayer layer, UnityTile tile, Dictionary<string, float> uiData = null)
         {
 			Debug.LogWarning("PoiVisualer is deprecated. Use regular VectorLayerVisualizer and PrefabModifier.");
             _container = new GameObject(Key + " Container");

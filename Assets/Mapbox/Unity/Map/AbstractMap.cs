@@ -5,6 +5,7 @@
 	using Utils;
 	using UnityEngine;
 	using Mapbox.Map;
+	using System.Collections.Generic;
 
 	public abstract class AbstractMap : MonoBehaviour, IMap
 	{
@@ -186,6 +187,6 @@
 			OnInitialized();
 		}
 
-		public abstract void Initialize(Vector2d latLon, int zoom);
+		public abstract void Initialize(Vector2d latLon, int zoom, Dictionary<string, float> uiData = null);
 	}
 }

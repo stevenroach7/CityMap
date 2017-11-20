@@ -3,6 +3,7 @@ namespace Mapbox.Unity.MeshGeneration.Interfaces
     using Mapbox.VectorTile;
     using UnityEngine;
     using Mapbox.Unity.MeshGeneration.Data;
+	using System.Collections.Generic;
 
     /// <summary>
     /// Layer visualizers contains sytling logic and processes features
@@ -11,6 +12,6 @@ namespace Mapbox.Unity.MeshGeneration.Interfaces
     {
         public bool Active = true;
         public abstract string Key { get; set; }
-        public abstract void Create(VectorTileLayer layer, UnityTile tile);
+		public abstract void Create(VectorTileLayer layer, UnityTile tile, Dictionary<string, float> uiData = null);
     }
 }

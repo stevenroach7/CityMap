@@ -5,10 +5,13 @@
 	using System;
 	using UnityEngine;
 	using Mapbox.Unity.Map;
+	using System.Collections.Generic;
 
 	public abstract class AbstractTileFactory : ScriptableObject
     {
 		protected IFileSource _fileSource;
+
+		protected Dictionary<string, float> _uiData;
         
 		public ModuleState State { get; private set; }
 
@@ -37,10 +40,12 @@
 
 		public event Action<AbstractTileFactory> OnFactoryStateChanged = delegate { };
 
-        public void Initialize(IFileSource fileSource) // TODO: Add uiData dictionary SR.
+		public void Initialize(IFileSource fileSource, Dictionary<string, float> uiData = null) // TODO: Add uiData dictionary SR.
         {
 			_progress = 0;
 			_fileSource = fileSource;
+			_uiData = uiData;
+
             State = ModuleState.Initialized;
             OnInitialized();
         }

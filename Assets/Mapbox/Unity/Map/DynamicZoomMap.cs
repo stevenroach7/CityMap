@@ -4,6 +4,7 @@
 	using Mapbox.Utils;
 	using Mapbox.Unity.Utilities;
 	using Mapbox.Map;
+	using System.Collections.Generic;
 
 	public class DynamicZoomMap : AbstractMap
 	{
@@ -16,7 +17,7 @@
 		[Range(0, 22)]
 		public int MaxZoom;
 
-		public override void Initialize(Vector2d latLon, int zoom)
+		public override void Initialize(Vector2d latLon, int zoom, Dictionary<string, float> uiData = null)
 		{
 			_worldHeightFixed = false;
 			_centerLatitudeLongitude = latLon;

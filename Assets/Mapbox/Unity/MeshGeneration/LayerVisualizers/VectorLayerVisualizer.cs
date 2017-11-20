@@ -58,7 +58,7 @@ namespace Mapbox.Unity.MeshGeneration.Interfaces
 		/// </summary>
 		/// <param name="layer"></param>
 		/// <param name="tile"></param>
-		public override void Create(VectorTileLayer layer, UnityTile tile)
+		public override void Create(VectorTileLayer layer, UnityTile tile, Dictionary<string, float> uiData = null)
 		{
 			_container = new GameObject(Key + " Container");
 			_container.transform.SetParent(tile.transform, false);
@@ -72,6 +72,10 @@ namespace Mapbox.Unity.MeshGeneration.Interfaces
 				var feature = new VectorFeatureUnity(layer.GetFeature(i, 0), tile, layer.Extent);
 
 				// Add uiDataDictionary to feature here. SR
+				if (uiData != null) 
+				{
+					feature.Properties.Add ("timeIndex", uiData["timeIndex"]);
+				}
 
 				foreach (var filter in Filters)
 				{

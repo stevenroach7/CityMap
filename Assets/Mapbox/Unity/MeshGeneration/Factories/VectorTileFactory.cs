@@ -57,7 +57,6 @@ namespace Mapbox.Unity.MeshGeneration.Factories
 
 			foreach (LayerVisualizerBase factory in Visualizers)
 			{
-				// TODO: Add uiData dictionary to factory here. SR
 
 				if (factory == null)
 					continue;
@@ -142,7 +141,7 @@ namespace Mapbox.Unity.MeshGeneration.Factories
 					{
 						if (builder.Active)
 						{
-							builder.Create(_cachedData[tile].Data.GetLayer(layerName), tile);
+							builder.Create(_cachedData[tile].Data.GetLayer(layerName), tile, _uiData);
 						}
 					}
 				}

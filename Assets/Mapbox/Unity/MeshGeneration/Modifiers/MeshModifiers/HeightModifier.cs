@@ -80,18 +80,20 @@ namespace Mapbox.Unity.MeshGeneration.Modifiers
 			float hf = _height * _scale;
 			if (!_forceHeight)
 			{
-				if (feature.Properties.ContainsKey(_heightDataKey))
-				{
-					if (float.TryParse(feature.Properties[_heightDataKey].ToString(), out hf))
-					{
+//				if (feature.Properties.ContainsKey(_heightDataKey))
+				if (feature.Properties.ContainsKey ("timeIndex")) {
+//					if (float.TryParse(feature.Properties[_heightDataKey].ToString(), out hf))
+					if (float.TryParse (feature.Properties["timeIndex"].ToString (), out hf)) {
+						Debug.Log("timeIndex: " + hf);
 						hf *= _scale;
 						hf *= _heightMultiplier;
-						if (feature.Properties.ContainsKey("min_height"))
-						{
-							minHeight = float.Parse(feature.Properties["min_height"].ToString()) * _scale;
+						if (feature.Properties.ContainsKey ("min_height")) {
+							minHeight = float.Parse (feature.Properties ["min_height"].ToString ()) * _scale;
 							hf -= minHeight;
 						}
 					}
+				} else {
+					Debug.Log("Nope!");
 				}
 				if (feature.Properties.ContainsKey("ele"))
 				{
