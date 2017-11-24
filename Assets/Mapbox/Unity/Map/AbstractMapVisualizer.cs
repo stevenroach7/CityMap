@@ -50,7 +50,7 @@
 		/// Initializes the factories by passing the file source down, which is necessary for data (web/file) calls
 		/// </summary>
 		/// <param name="fileSource"></param>
-		public void Initialize(IMapReadable map, IFileSource fileSource) // TODO: Add uiData optional here SR
+		public void Initialize(IMapReadable map, IFileSource fileSource)
 		{
 			_map = map;
 
@@ -71,8 +71,6 @@
 				}
 				else
 				{
-					// TODO: Initialize the VectorTileFactory with uiData dictionary. SR
-
 					factory.Initialize(fileSource);
 					factory.OnFactoryStateChanged += UpdateState;
 				}

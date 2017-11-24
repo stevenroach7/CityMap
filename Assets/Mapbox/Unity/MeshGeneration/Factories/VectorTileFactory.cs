@@ -57,8 +57,6 @@ namespace Mapbox.Unity.MeshGeneration.Factories
 
 			foreach (LayerVisualizerBase factory in Visualizers)
 			{
-				// TODO: Add uiData dictionary to factory here. SR
-
 				if (factory == null)
 					continue;
 

@@ -320,10 +320,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 871176339}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e15eeefe275f84bd0b4dd6e3cd040dc2, type: 3}
+  m_Script: {fileID: 11500000, guid: 4e8cf48fc64824ce5b4af2579bae309b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _zoomSlider: {fileID: 1712944718}
+  _timeSlider: {fileID: 1712944718}
 --- !u!114 &871176342
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -37,7 +37,7 @@
 
 		public event Action<AbstractTileFactory> OnFactoryStateChanged = delegate { };
 
-        public void Initialize(IFileSource fileSource) // TODO: Add uiData dictionary SR.
+        public void Initialize(IFileSource fileSource)
         {
 			_progress = 0;
 			_fileSource = fileSource;

@@ -71,8 +71,6 @@ namespace Mapbox.Unity.MeshGeneration.Interfaces
 				filterOut = false;
 				var feature = new VectorFeatureUnity(layer.GetFeature(i, 0), tile, layer.Extent);
 
-				// Add uiDataDictionary to feature here. SR
-
 				foreach (var filter in Filters)
 				{
 					if (!string.IsNullOrEmpty(filter.Key) && !feature.Properties.ContainsKey(filter.Key))
