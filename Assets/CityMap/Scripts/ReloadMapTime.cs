@@ -19,12 +19,12 @@
 			_camera = Camera.main;
 			_cameraStartPos = _camera.transform.position;
 			_map = FindObjectOfType<AbstractMap>();
+			_timeSlider.onValueChanged.AddListener(Reload);
 		}
-			
+
 		void Reload(float value)
 		{
-			// Set Time Global Singleton here. 
-
+			UIDataManager.Instance.TimeIndex = (int) _timeSlider.value;
 			_camera.transform.position = _cameraStartPos;
 			_map.Initialize(_map.CenterLatitudeLongitude, _map.Zoom);
 		}

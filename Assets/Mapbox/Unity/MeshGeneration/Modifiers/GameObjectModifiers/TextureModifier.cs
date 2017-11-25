@@ -24,9 +24,6 @@ namespace Mapbox.Unity.MeshGeneration.Modifiers
         private Material[] _sideMaterials;
 
 		[SerializeField]
-		private string _sideColorDataKey = "";
-
-		[SerializeField]
 		private float _minDataValue = 0;
 
 
@@ -45,14 +42,15 @@ namespace Mapbox.Unity.MeshGeneration.Modifiers
 			{
 				float dataValue = _minDataValue;
 				Material sideMaterial = _sideMaterials[Random.Range (0, _sideMaterials.Length)];
-				if ((fb.Data.Properties.ContainsKey ("City")) && (fb.Data.Properties ["City"].Equals (_cityString))) 
+				if ((fb.Data.Properties.ContainsKey("City")) && (fb.Data.Properties ["City"].Equals(_cityString))) 
 				{
-					if (fb.Data.Properties.ContainsKey (_sideColorDataKey)) {
-						if (float.TryParse (fb.Data.Properties [_sideColorDataKey].ToString (), out dataValue)) 
+					string sideColorDataKey = UIDataManager.Instance.MonthKeys[UIDataManager.Instance.TimeIndex];
+					if (fb.Data.Properties.ContainsKey(sideColorDataKey)) {
+						if (float.TryParse (fb.Data.Properties[sideColorDataKey].ToString (), out dataValue)) 
 						{
 							float colorPercent = (dataValue - _minDataValue) / (_maxDataValue - _minDataValue);
-							Color sideMaterialColor = Color.Lerp (Color.white, Color.blue, colorPercent);
-							sideMaterial.SetColor ("_Color", sideMaterialColor);
+							Color sideMaterialColor = Color.Lerp(Color.white, Color.blue, colorPercent);
+							sideMaterial.SetColor("_Color", sideMaterialColor);
 						}
 					}
 				} else 

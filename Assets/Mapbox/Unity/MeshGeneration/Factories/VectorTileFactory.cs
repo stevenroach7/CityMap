@@ -88,6 +88,9 @@ namespace Mapbox.Unity.MeshGeneration.Factories
 
 				_cachedData.Add(tile, vectorTile);
 
+				
+				// TODO: SR - Look into this to see why modifiers aren't getting called again.
+
 				// FIXME: we can make the request BEFORE getting a response from these!
 				if (tile.HeightDataState == TilePropertyState.Loading ||
 					tile.RasterDataState == TilePropertyState.Loading)

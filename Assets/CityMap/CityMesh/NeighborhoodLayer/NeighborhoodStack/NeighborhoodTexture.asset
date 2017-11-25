@@ -19,7 +19,6 @@ MonoBehaviour:
   _textureSides: 1
   _sideMaterials:
   - {fileID: 2100000, guid: baf166356ddf5423bb2aae39a68aeb7d, type: 2}
-  _sideColorDataKey: 2016-11
-  _minDataValue: 100
-  _maxDataValue: 250
+  _minDataValue: 50
+  _maxDataValue: 230
   _cityString: Saint Paul

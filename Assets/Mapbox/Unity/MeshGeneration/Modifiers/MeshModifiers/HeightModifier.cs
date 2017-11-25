@@ -37,12 +37,8 @@ namespace Mapbox.Unity.MeshGeneration.Modifiers
 		private bool _createSideWalls = true;
 
 		[SerializeField]
-		private string _heightDataKey = "height";
-
-		[SerializeField]
 		private float _heightMultiplier = 1;
 
-		// TODO: Keep this? Figure out where blotching is coming from. 
 		[SerializeField]
 		private string _cityString;
 
@@ -80,9 +76,10 @@ namespace Mapbox.Unity.MeshGeneration.Modifiers
 			float hf = _height * _scale;
 			if (!_forceHeight)
 			{
-				if (feature.Properties.ContainsKey(_heightDataKey))
+				string heightDataKey = UIDataManager.Instance.MonthKeys[UIDataManager.Instance.TimeIndex];
+				if (feature.Properties.ContainsKey(heightDataKey))
 				{
-					if (float.TryParse(feature.Properties[_heightDataKey].ToString(), out hf))
+					if (float.TryParse(feature.Properties[heightDataKey].ToString(), out hf))
 					{
 						hf *= _scale;
 						hf *= _heightMultiplier;
