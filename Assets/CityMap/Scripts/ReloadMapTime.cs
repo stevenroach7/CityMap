@@ -14,6 +14,9 @@
 		[SerializeField]
 		Slider _timeSlider;
 
+		[SerializeField]
+		Text _timeLabel;
+
 		void Awake()
 		{
 			_camera = Camera.main;
@@ -25,6 +28,7 @@
 		void Reload(float value)
 		{
 			UIDataManager.Instance.TimeIndex = (int) _timeSlider.value;
+			_timeLabel.text = UIDataManager.Instance.MonthKeys[UIDataManager.Instance.TimeIndex];
 			_camera.transform.position = _cameraStartPos;
 			_map.Initialize(_map.CenterLatitudeLongitude, _map.Zoom);
 		}
