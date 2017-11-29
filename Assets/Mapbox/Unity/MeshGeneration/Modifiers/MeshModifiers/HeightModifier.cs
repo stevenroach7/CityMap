@@ -37,10 +37,10 @@ namespace Mapbox.Unity.MeshGeneration.Modifiers
 		private bool _createSideWalls = true;
 
 		[SerializeField]
-		private float _heightMultiplier = 1;
+		private float _heightMultiplier = 10;
 
 		[SerializeField]
-		private string _cityString;
+		private string _cityString = "Saint Paul";
 
 
 		public override ModifierType Type { get { return ModifierType.Preprocess; } }
@@ -54,8 +54,12 @@ namespace Mapbox.Unity.MeshGeneration.Modifiers
 		public override void Run(VectorFeatureUnity feature, MeshData md, UnityTile tile = null)
 		{
 
-			if (md.Vertices.Count == 0 || feature == null || feature.Points.Count < 1)
+			Debug.Log("Height Modifier Run Called");
+
+			if (md.Vertices.Count == 0 || feature == null || feature.Points.Count < 1) 
+			{
 				return;
+			}
 
 			// Make sure feature is in desired city.
 			if (!feature.Properties.ContainsKey("City")) 
@@ -76,6 +80,20 @@ namespace Mapbox.Unity.MeshGeneration.Modifiers
 			float hf = _height * _scale;
 			if (!_forceHeight)
 			{
+
+				if (DynamicFeatureManager.Instance.FeatureDictionary.ContainsKey(md)) 
+				{
+					Debug.Log ("Seen Mesh Data");
+				}
+				else 
+				{
+					Debug.Log ("Haven't seen mesh data");
+				}
+				Debug.Log(UIDataManager.Instance.TimeIndex);
+
+				DynamicFeatureManager.Instance.FeatureDictionary[md] = feature;
+
+
 				string heightDataKey = UIDataManager.Instance.MonthKeys[UIDataManager.Instance.TimeIndex];
 				if (feature.Properties.ContainsKey(heightDataKey))
 				{
@@ -98,7 +116,8 @@ namespace Mapbox.Unity.MeshGeneration.Modifiers
 					}
 				}
 			}
-
+				
+			Debug.Log("HF = " + hf);
 			var max = md.Vertices[0].y;
 			var min = md.Vertices[0].y;
 			if (_flatTops)

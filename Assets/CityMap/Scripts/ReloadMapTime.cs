@@ -1,4 +1,4 @@
-﻿namespace Mapbox.Examples
+﻿namespace CityMap.Scripts
 {
 	using Mapbox.Geocoding;
 	using UnityEngine.UI;
@@ -30,7 +30,8 @@
 			UIDataManager.Instance.TimeIndex = (int) _timeSlider.value;
 			_timeLabel.text = UIDataManager.Instance.MonthKeys[UIDataManager.Instance.TimeIndex];
 			_camera.transform.position = _cameraStartPos;
-			_map.Initialize(_map.CenterLatitudeLongitude, _map.Zoom);
+			DynamicFeatureManager.Instance.updateMeshData();
+//			_map.Initialize(_map.CenterLatitudeLongitude, _map.Zoom);
 		}
 	}
 }
