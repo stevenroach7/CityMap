@@ -42,7 +42,8 @@ namespace Mapbox.Unity.MeshGeneration.Modifiers
 			{
 				float dataValue = _minDataValue;
 				Material sideMaterial = _sideMaterials[Random.Range (0, _sideMaterials.Length)];
-				if ((fb.Data.Properties.ContainsKey("City")) && (fb.Data.Properties ["City"].Equals(_cityString))) 
+//				if ((fb.Data.Properties.ContainsKey("City")) && (fb.Data.Properties ["City"].Equals(_cityString))) 
+				if (true)
 				{
 					string sideColorDataKey = UIDataManager.Instance.MonthKeys[UIDataManager.Instance.TimeIndex];
 					if (fb.Data.Properties.ContainsKey(sideColorDataKey)) {

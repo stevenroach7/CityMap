@@ -57,17 +57,17 @@ namespace Mapbox.Unity.MeshGeneration.Modifiers
 			if (md.Vertices.Count == 0 || feature == null || feature.Points.Count < 1)
 				return;
 
-			// Make sure feature is in desired city.
-			if (!feature.Properties.ContainsKey("City")) 
-			{
-				return;
-			} 
-			else
-			{
-				if (!feature.Properties["City"].Equals(_cityString)) {
-					return;
-				}
-			}
+//			// Make sure feature is in desired city.
+//			if (!feature.Properties.ContainsKey("City")) 
+//			{
+//				return;
+//			} 
+//			else
+//			{
+//				if (!feature.Properties["City"].Equals(_cityString)) {
+//					return;
+//				}
+//			}
 
 			if (tile != null)
 				_scale = tile.TileScale;
