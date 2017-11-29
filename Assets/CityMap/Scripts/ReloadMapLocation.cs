@@ -31,6 +31,9 @@ namespace CityMap.scripts
 
 			MapLocationManager mapLocationManager = new MapLocationManager();
 			MapLocation mapLocation = mapLocationManager._mapLocationList[value];
+
+			UIDataManager.Instance.cityString = mapLocation._cityString;
+
 			_map.UnityTileSize = mapLocation._tileSize;
 			RangeTileProvider tileProvider = _map.TileProvider as RangeTileProvider;
 			if (tileProvider != null) 

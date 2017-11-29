@@ -7,6 +7,7 @@ public class UIDataManager : Singleton<UIDataManager>
 
 	public int TimeIndex = 0;
 	public List<string> MonthKeys;
+	public string cityString = "Saint Paul";
 
 	protected UIDataManager() 
 	{

@@ -17,6 +17,7 @@
 			List<MapLocation> mapLocationList = new List<MapLocation>();
 
 			MapLocation saintPaulMap = new MapLocation();
+			saintPaulMap._cityString = "Saint Paul";
 			saintPaulMap._latLongString = "44.9504, -93.1015";
 			saintPaulMap._zoom = 13;
 			saintPaulMap._tileSize = (float) 0.1;
@@ -27,6 +28,7 @@
 			mapLocationList.Add(saintPaulMap);
 
 			MapLocation seattleMap = new MapLocation();
+			seattleMap._cityString = "Seattle";
 			seattleMap._latLongString = "47.6038, -122.3301";
 			seattleMap._zoom = 13;
 			seattleMap._tileSize = (float) 0.1;
@@ -37,6 +39,7 @@
 			mapLocationList.Add(seattleMap);
 
 			MapLocation minneapolisMap = new MapLocation();
+			minneapolisMap._cityString = "Minneapolis";
 			minneapolisMap._latLongString = "44.9773, -93.2655";
 			minneapolisMap._zoom = 13;
 			minneapolisMap._tileSize = (float) 0.1;
@@ -47,6 +50,7 @@
 			mapLocationList.Add(minneapolisMap);
 
 			MapLocation detroitMap = new MapLocation();
+			detroitMap._cityString = "Detroit";
 			detroitMap._latLongString = "42.3487, -83.0567";
 			detroitMap._zoom = 13;
 			detroitMap._tileSize = (float) 0.1;
