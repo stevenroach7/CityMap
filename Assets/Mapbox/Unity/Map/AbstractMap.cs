@@ -38,6 +38,17 @@
 
 		[SerializeField]
 		protected AbstractTileProvider _tileProvider;
+		public AbstractTileProvider TileProvider 
+		{
+			get 
+			{ 
+				return _tileProvider;
+			} 
+			set 
+			{
+				_tileProvider = value;
+			}
+		}
 
 		[SerializeField]
 		protected AbstractMapVisualizer _mapVisualizer;
@@ -56,6 +67,10 @@
 			get
 			{
 				return _unityTileSize;
+			}
+			set 
+			{
+				_unityTileSize = value;
 			}
 		}
 

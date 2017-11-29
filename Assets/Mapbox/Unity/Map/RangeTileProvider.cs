@@ -7,13 +7,56 @@ namespace Mapbox.Unity.Map
 	{
 		[SerializeField]
 		private int _west;
+		public int West 
+		{
+			get 
+			{
+				return _west;
+			}
+			set 
+			{
+				_west = value;
+			}
+		}
 		[SerializeField]
 		private int _north;
+		public int North
+		{
+			get 
+			{
+				return _north;
+			}
+			set 
+			{
+				_north = value;
+			}
+		}
 		[SerializeField]
 		private int _east;
+		public int East
+		{
+			get 
+			{
+				return _east;
+			}
+			set 
+			{
+				_east = value;
+			}
+		}
 		[SerializeField]
 		private int _south;
-
+		public int South
+		{
+			get 
+			{
+				return _south;
+			}
+			set 
+			{
+				_south = value;
+			}
+		}
 		internal override void OnInitialized()
 		{
 			var centerTile = TileCover.CoordinateToTileId(_map.CenterLatitudeLongitude, _map.Zoom);

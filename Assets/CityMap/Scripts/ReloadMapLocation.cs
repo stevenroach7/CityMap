@@ -31,12 +31,18 @@ namespace CityMap.scripts
 
 			MapLocationManager mapLocationManager = new MapLocationManager();
 			MapLocation mapLocation = mapLocationManager._mapLocationList[value];
-
-			// TODO: Change Tile Size, and Range Tiles provided
-
+			_map.UnityTileSize = mapLocation._tileSize;
+			RangeTileProvider tileProvider = _map.TileProvider as RangeTileProvider;
+			if (tileProvider != null) 
+			{
+				tileProvider.West = mapLocation._westTiles;
+				tileProvider.North = mapLocation._northTiles;
+				tileProvider.East = mapLocation._eastTiles;
+				tileProvider.South = mapLocation._southTiles;
+				_map.TileProvider = tileProvider;
+			}
 			string[] latLonSplit = mapLocation._latLongString.Split(',');
 			Vector2d mapCenterLatLong = new Vector2d(double.Parse (latLonSplit[0]), double.Parse (latLonSplit[1]));
-
 			_map.Initialize(mapCenterLatLong, mapLocation._zoom);
 		}
 	}

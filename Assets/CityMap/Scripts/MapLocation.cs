@@ -6,7 +6,7 @@
 	{
 		public string _latLongString;
 		public int _zoom;
-		public double _tileSize;
+		public float _tileSize;
 		public int _westTiles;
 		public int _northTiles;
 		public int _eastTiles;
