@@ -36,6 +36,26 @@
 			seattleMap._southTiles = 3;
 			mapLocationList.Add(seattleMap);
 
+			MapLocation minneapolisMap = new MapLocation();
+			minneapolisMap._latLongString = "44.9773, -93.2655";
+			minneapolisMap._zoom = 13;
+			minneapolisMap._tileSize = 0.1;
+			minneapolisMap._westTiles = 1;
+			minneapolisMap._northTiles = 2;
+			minneapolisMap._eastTiles = 2;
+			minneapolisMap._southTiles = 3;
+			mapLocationList.Add(minneapolisMap);
+
+			MapLocation detroitMap = new MapLocation();
+			detroitMap._latLongString = "42.3487, -83.0567";
+			detroitMap._zoom = 13;
+			detroitMap._tileSize = 0.1;
+			detroitMap._westTiles = 2;
+			detroitMap._northTiles = 4;
+			detroitMap._eastTiles = 3;
+			detroitMap._southTiles = 2;
+			mapLocationList.Add(detroitMap);
+
 			return mapLocationList;
 		}
 	}
