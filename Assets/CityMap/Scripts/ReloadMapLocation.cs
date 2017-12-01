@@ -16,7 +16,7 @@ namespace CityMap.scripts
 
 		[SerializeField]
 		Dropdown _locationDropdown;
-
+	
 		void Awake()
 		{
 			_camera = Camera.main;
@@ -28,9 +28,7 @@ namespace CityMap.scripts
 		void Reload(int value)
 		{
 			_camera.transform.position = _cameraStartPos;
-
-			MapLocationManager mapLocationManager = new MapLocationManager();
-			MapLocation mapLocation = mapLocationManager._mapLocationList[value];
+			MapLocation mapLocation = MapLocationManager.Instance._mapLocationList[value];
 
 			UIDataManager.Instance.cityString = mapLocation._cityString;
 

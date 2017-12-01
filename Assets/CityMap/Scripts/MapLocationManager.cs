@@ -3,11 +3,11 @@
 	using System;
 	using System.Collections.Generic;
 
-	public class MapLocationManager
+	public class MapLocationManager : Singleton<MapLocationManager>
 	{
 		public List<MapLocation> _mapLocationList;
 
-		public MapLocationManager ()
+		protected MapLocationManager ()
 		{
 			_mapLocationList = createMapLocationList ();
 		}

@@ -42,26 +42,34 @@ namespace Mapbox.Unity.MeshGeneration.Modifiers
 			{
 				float dataValue = _minDataValue;
 				Material sideMaterial = _sideMaterials[Random.Range (0, _sideMaterials.Length)];
+				Material topMaterial = new Material(sideMaterial.shader);
 
 				_cityString = UIDataManager.Instance.cityString;
 				if ((fb.Data.Properties.ContainsKey("City")) && (fb.Data.Properties ["City"].Equals(_cityString))) 
 				{
 					string sideColorDataKey = UIDataManager.Instance.MonthKeys[UIDataManager.Instance.TimeIndex];
-					if (fb.Data.Properties.ContainsKey(sideColorDataKey)) {
-						if (float.TryParse (fb.Data.Properties[sideColorDataKey].ToString (), out dataValue)) 
-						{
+					if (fb.Data.Properties.ContainsKey (sideColorDataKey)) {
+						if (float.TryParse (fb.Data.Properties [sideColorDataKey].ToString (), out dataValue)) {
 							float colorPercent = (dataValue - _minDataValue) / (_maxDataValue - _minDataValue);
-							Color sideMaterialColor = Color.Lerp(Color.white, Color.blue, colorPercent);
-							sideMaterial.SetColor("_Color", sideMaterialColor);
+							Color sideMaterialColor = Color.Lerp (Color.white, Color.blue, colorPercent);
+							sideMaterial.SetColor ("_Color", sideMaterialColor);
+							// TODO: Add top material color
+//							topMaterial.SetColor("_Color", Color.clear);
 						}
+					} 
+					else 
+					{
+						// TODO: set top material to missing data material
+						topMaterial.SetColor("_Color", Color.black);
 					}
+
 				} else 
 				{
 					sideMaterial.SetColor("_Color", Color.clear);
 				}
 				_meshRenderer.materials = new Material[2]
 				{
-				_topMaterials[Random.Range(0, _topMaterials.Length)],
+				topMaterial,
 				sideMaterial
 				};
 			}
