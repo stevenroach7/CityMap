@@ -16,7 +16,17 @@ namespace CityMap.scripts
 
 		[SerializeField]
 		Dropdown _locationDropdown;
-	
+
+		[SerializeField]
+		GameObject _minValue;
+
+
+		[SerializeField]
+		GameObject _maxValue;
+
+		[SerializeField]
+		GameObject _legendBar;
+
 		void Awake()
 		{
 			_camera = Camera.main;
@@ -31,6 +41,34 @@ namespace CityMap.scripts
 			MapLocation mapLocation = MapLocationManager.Instance._mapLocationList[value];
 
 			UIDataManager.Instance.cityString = mapLocation._cityString;
+
+			float barYScale = 0f;
+
+			Transform barTransform = (Transform)_legendBar.GetComponent(typeof(Transform));
+			if (barTransform != null) 
+			{
+				Vector3 tempScale = barTransform.localScale;
+				tempScale.y = 0.2f;
+				barYScale = tempScale.y;
+				barTransform.localScale = tempScale;
+				Vector3 tempPosition = barTransform.position;
+				tempPosition.y = tempScale.y / 2;
+				barTransform.position = tempPosition;
+			}
+				
+			TextMesh maxTextMesh = (TextMesh) _maxValue.GetComponent(typeof(TextMesh));
+			if (maxTextMesh != null) 
+			{
+				maxTextMesh.text = "500";
+			}
+
+			Transform maxValTransform = (Transform)_maxValue.GetComponent(typeof(Transform));
+			if (maxValTransform != null && barYScale > 0) 
+			{
+				Vector3 tempPosition = maxValTransform.position;
+				tempPosition.y = barYScale;
+				maxValTransform.position = tempPosition;
+			}
 
 			_map.UnityTileSize = mapLocation._tileSize;
 			RangeTileProvider tileProvider = _map.TileProvider as RangeTileProvider;

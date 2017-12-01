@@ -14,11 +14,10 @@ MonoBehaviour:
   Active: 1
   _textureTop: 1
   _useSatelliteTexture: 1
-  _topMaterials:
-  - {fileID: 0}
+  _topMaterials: []
   _textureSides: 1
   _sideMaterials:
   - {fileID: 2100000, guid: baf166356ddf5423bb2aae39a68aeb7d, type: 2}
   _minDataValue: 50
   _maxDataValue: 230
-  _cityString: Saint Paul
+  _cityString: Minneapolis
