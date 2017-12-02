@@ -1,4 +1,5 @@
 ﻿using Mapbox.Utils;
+using System;
 
 namespace CityMap.scripts
 {
@@ -20,7 +21,6 @@ namespace CityMap.scripts
 		[SerializeField]
 		GameObject _minValue;
 
-
 		[SerializeField]
 		GameObject _maxValue;
 
@@ -38,18 +38,35 @@ namespace CityMap.scripts
 		void Reload(int value)
 		{
 			_camera.transform.position = _cameraStartPos;
-			MapLocation mapLocation = MapLocationManager.Instance._mapLocationList[value];
 
+			string cityString = "";
+			switch(value) { // Depends on dropdown options order
+			case 0:
+				cityString = "Saint Paul";
+				break;
+			case 1: 
+				cityString = "Seattle";
+				break;
+			case 2:
+				cityString = "Minneapolis";
+				break;
+			case 3: 
+				cityString = "Detroit";
+				break;
+			}
+
+			MapLocation mapLocation = MapLocationManager.Instance._mapLocationDict[cityString];
 			UIDataManager.Instance.cityString = mapLocation._cityString;
 
-			float barYScale = 0f;
+			float maxHeight = mapLocation._minMaxDict["max"][UIDataManager.Instance.MonthKeys[UIDataManager.Instance.TimeIndex]]; 
+			int maxHeightRoundedUp = (int) Math.Round(maxHeight / 10, MidpointRounding.AwayFromZero) * 10;
+			float barYScale = maxHeightRoundedUp / 4880f;
 
 			Transform barTransform = (Transform)_legendBar.GetComponent(typeof(Transform));
 			if (barTransform != null) 
 			{
 				Vector3 tempScale = barTransform.localScale;
-				tempScale.y = 0.2f;
-				barYScale = tempScale.y;
+				tempScale.y = barYScale;
 				barTransform.localScale = tempScale;
 				Vector3 tempPosition = barTransform.position;
 				tempPosition.y = tempScale.y / 2;
@@ -59,14 +76,14 @@ namespace CityMap.scripts
 			TextMesh maxTextMesh = (TextMesh) _maxValue.GetComponent(typeof(TextMesh));
 			if (maxTextMesh != null) 
 			{
-				maxTextMesh.text = "500";
+				maxTextMesh.text = maxHeightRoundedUp.ToString();
 			}
 
 			Transform maxValTransform = (Transform)_maxValue.GetComponent(typeof(Transform));
 			if (maxValTransform != null && barYScale > 0) 
 			{
 				Vector3 tempPosition = maxValTransform.position;
-				tempPosition.y = barYScale;
+				tempPosition.y = barYScale + 0.00595737704f;
 				maxValTransform.position = tempPosition;
 			}
 

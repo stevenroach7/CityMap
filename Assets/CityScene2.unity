@@ -1168,6 +1168,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _timeSlider: {fileID: 716481322}
   _timeLabel: {fileID: 738307530}
+  _minValue: {fileID: 556864399}
+  _maxValue: {fileID: 956098963}
+  _legendBar: {fileID: 1028031726}
 --- !u!114 &871176342
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1259,7 +1262,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 956098963}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.0052, y: 0.1074, z: -0.002499998}
+  m_LocalPosition: {x: 0.0052, y: 0.0244, z: -0.002499998}
   m_LocalScale: {x: 0.009999999, y: 0.009999999, z: 0.009999999}
   m_Children: []
   m_Father: {fileID: 1199892053}
@@ -1272,7 +1275,7 @@ TextMesh:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 956098963}
-  m_Text: 250
+  m_Text: 90
   m_OffsetZ: 0
   m_CharacterSize: 1
   m_LineSpacing: 1
@@ -1441,8 +1444,8 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1028031726}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.05, z: 0}
-  m_LocalScale: {x: 0.005, y: 0.1, z: 0.005}
+  m_LocalPosition: {x: 0, y: 0.009221312, z: 0}
+  m_LocalScale: {x: 0.005, y: 0.018442623, z: 0.005}
   m_Children: []
   m_Father: {fileID: 1199892053}
   m_RootOrder: 0

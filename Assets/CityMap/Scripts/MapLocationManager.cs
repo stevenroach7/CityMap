@@ -8,16 +8,16 @@ namespace CityMap.scripts
 
 	public class MapLocationManager : Singleton<MapLocationManager>
 	{
-		public List<MapLocation> _mapLocationList;
+		public Dictionary<string, MapLocation> _mapLocationDict;
 
 		protected MapLocationManager ()
 		{
-			_mapLocationList = createMapLocationList ();
+			_mapLocationDict = createMapLocationDict ();
 		}
 
-		private List<MapLocation> createMapLocationList() {
+		private Dictionary<string, MapLocation> createMapLocationDict() {
 
-			List<MapLocation> mapLocationList = new List<MapLocation>();
+			Dictionary<string, MapLocation> mapLocationDict = new Dictionary<string, MapLocation>();
 
 			MapLocation saintPaulMap = new MapLocation();
 			saintPaulMap._cityString = "Saint Paul";
@@ -29,7 +29,7 @@ namespace CityMap.scripts
 			saintPaulMap._eastTiles = 2;
 			saintPaulMap._southTiles = 2;
 			saintPaulMap._minMaxDict = jsonToMinMaxDict("Assets/CityMap/Data/SaintPaulMinMax.json");
-			mapLocationList.Add(saintPaulMap);
+			mapLocationDict["Saint Paul"] = saintPaulMap;
 
 			MapLocation seattleMap = new MapLocation();
 			seattleMap._cityString = "Seattle";
@@ -41,7 +41,8 @@ namespace CityMap.scripts
 			seattleMap._eastTiles = 2;
 			seattleMap._southTiles = 3;
 			seattleMap._minMaxDict = jsonToMinMaxDict("Assets/CityMap/Data/SeattleMinMax.json");
-			mapLocationList.Add(seattleMap);
+			mapLocationDict["Seattle"] = seattleMap;
+
 
 			MapLocation minneapolisMap = new MapLocation();
 			minneapolisMap._cityString = "Minneapolis";
@@ -53,7 +54,8 @@ namespace CityMap.scripts
 			minneapolisMap._eastTiles = 2;
 			minneapolisMap._southTiles = 3;
 			minneapolisMap._minMaxDict = jsonToMinMaxDict("Assets/CityMap/Data/MinneapolisMinMax.json");
-			mapLocationList.Add(minneapolisMap);
+			mapLocationDict["Minneapolis"] = minneapolisMap;
+
 
 			MapLocation detroitMap = new MapLocation();
 			detroitMap._cityString = "Detroit";
@@ -65,8 +67,8 @@ namespace CityMap.scripts
 			detroitMap._eastTiles = 3;
 			detroitMap._southTiles = 2;
 			detroitMap._minMaxDict = jsonToMinMaxDict("Assets/CityMap/Data/DetroitMinMax.json");
-			mapLocationList.Add(detroitMap);
-			return mapLocationList;
+			mapLocationDict["Detroit"] = detroitMap;
+			return mapLocationDict;
 		}
 
 
