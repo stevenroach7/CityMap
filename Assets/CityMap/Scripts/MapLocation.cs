@@ -1,4 +1,6 @@
-﻿namespace CityMap.scripts
+﻿using System.Collections.Generic;
+
+namespace CityMap.scripts
 {
 	using System;
 
@@ -12,6 +14,7 @@
 		public int _northTiles;
 		public int _eastTiles;
 		public int _southTiles;
+		public Dictionary<string, Dictionary<string, float>> _minMaxDict;
 	}
 }
 

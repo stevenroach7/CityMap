@@ -1,4 +1,7 @@
-﻿namespace CityMap.scripts
+﻿using Mapbox.Json;
+using UnityEngine;
+
+namespace CityMap.scripts
 {
 	using System;
 	using System.Collections.Generic;
@@ -25,6 +28,7 @@
 			saintPaulMap._northTiles = 1;
 			saintPaulMap._eastTiles = 2;
 			saintPaulMap._southTiles = 2;
+			saintPaulMap._minMaxDict = jsonToMinMaxDict("Assets/CityMap/Data/SaintPaulMinMax.json");
 			mapLocationList.Add(saintPaulMap);
 
 			MapLocation seattleMap = new MapLocation();
@@ -36,6 +40,7 @@
 			seattleMap._northTiles = 5;
 			seattleMap._eastTiles = 2;
 			seattleMap._southTiles = 3;
+			seattleMap._minMaxDict = jsonToMinMaxDict("Assets/CityMap/Data/SeattleMinMax.json");
 			mapLocationList.Add(seattleMap);
 
 			MapLocation minneapolisMap = new MapLocation();
@@ -47,6 +52,7 @@
 			minneapolisMap._northTiles = 2;
 			minneapolisMap._eastTiles = 2;
 			minneapolisMap._southTiles = 3;
+			minneapolisMap._minMaxDict = jsonToMinMaxDict("Assets/CityMap/Data/MinneapolisMinMax.json");
 			mapLocationList.Add(minneapolisMap);
 
 			MapLocation detroitMap = new MapLocation();
@@ -58,10 +64,20 @@
 			detroitMap._northTiles = 4;
 			detroitMap._eastTiles = 3;
 			detroitMap._southTiles = 2;
+			detroitMap._minMaxDict = jsonToMinMaxDict("Assets/CityMap/Data/DetroitMinMax.json");
 			mapLocationList.Add(detroitMap);
-
 			return mapLocationList;
 		}
+
+
+		private Dictionary<string, Dictionary<string, float>> jsonToMinMaxDict(string jsonPath) {
+			string jsonText = System.IO.File.ReadAllText(jsonPath);
+			return JsonConvert.DeserializeObject<Dictionary<string, Dictionary<string, float>>>(jsonText);
+		}
+
+
+
+
 	}
 }
 
