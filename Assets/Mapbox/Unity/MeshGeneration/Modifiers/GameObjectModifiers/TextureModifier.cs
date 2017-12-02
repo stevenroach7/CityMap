@@ -1,8 +1,11 @@
+using System.Collections.Generic;
+
 namespace Mapbox.Unity.MeshGeneration.Modifiers
 {
     using UnityEngine;
     using Mapbox.Unity.MeshGeneration.Components;
 	using Mapbox.Unity.MeshGeneration.Data;
+	using CityMap.scripts;
 
 	/// <summary>
 	/// Texture Modifier is a basic modifier which simply adds a TextureSelector script to the features.
@@ -48,6 +51,11 @@ namespace Mapbox.Unity.MeshGeneration.Modifiers
 				if ((fb.Data.Properties.ContainsKey("City")) && (fb.Data.Properties ["City"].Equals(_cityString))) 
 				{
 					string sideColorDataKey = UIDataManager.Instance.MonthKeys[UIDataManager.Instance.TimeIndex];
+
+					Dictionary<string, Dictionary<string, float>> minMaxDict = MapLocationManager.Instance._mapLocationDict[UIDataManager.Instance.cityString]._minMaxDict;
+					_minDataValue = minMaxDict["min"][sideColorDataKey];
+					_maxDataValue = minMaxDict["max"][sideColorDataKey];
+
 					if (fb.Data.Properties.ContainsKey (sideColorDataKey)) {
 						if (float.TryParse (fb.Data.Properties [sideColorDataKey].ToString (), out dataValue)) {
 							float colorPercent = (dataValue - _minDataValue) / (_maxDataValue - _minDataValue);
