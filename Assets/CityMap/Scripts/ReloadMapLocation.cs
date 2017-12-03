@@ -1,5 +1,6 @@
 ﻿using Mapbox.Utils;
 using System;
+using Mapbox.Unity.MeshGeneration.Data;
 
 namespace CityMap.scripts
 {
@@ -98,7 +99,9 @@ namespace CityMap.scripts
 				_map.TileProvider = tileProvider;
 			}
 			string[] latLonSplit = mapLocation._latLongString.Split(',');
-			Vector2d mapCenterLatLong = new Vector2d(double.Parse (latLonSplit[0]), double.Parse (latLonSplit[1]));
+			Vector2d mapCenterLatLong = new Vector2d(double.Parse (latLonSplit[0]), double.Parse (latLonSplit[1])); 
+
+			DynamicFeatureManager.Instance.featureDictionary = new Dictionary<GameObject, VectorFeatureUnity>();
 			_map.Initialize(mapCenterLatLong, mapLocation._zoom);
 		}
 	}

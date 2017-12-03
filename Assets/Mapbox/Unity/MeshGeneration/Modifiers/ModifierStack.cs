@@ -1,3 +1,5 @@
+using CityMap.scripts;
+
 namespace Mapbox.Unity.MeshGeneration.Modifiers
 {
     using UnityEngine;
@@ -81,6 +83,7 @@ namespace Mapbox.Unity.MeshGeneration.Modifiers
 				mod.Run(bd, tile);
             }
 
+			DynamicFeatureManager.Instance.featureDictionary[go] = feature;
             return go;
         }
 

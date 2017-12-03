@@ -10,7 +10,6 @@
 	{
 		Camera _camera;
 		Vector3 _cameraStartPos;
-		AbstractMap _map;
 
 		[SerializeField]
 		Slider _timeSlider;
@@ -32,7 +31,6 @@
 		{
 			_camera = Camera.main;
 			_cameraStartPos = _camera.transform.position;
-			_map = FindObjectOfType<AbstractMap>();
 			_timeSlider.onValueChanged.AddListener(Reload);
 		}
 
@@ -74,7 +72,7 @@
 				
 			_timeLabel.text = UIDataManager.Instance.MonthKeys[UIDataManager.Instance.TimeIndex];
 			_camera.transform.position = _cameraStartPos;
-			_map.Initialize(_map.CenterLatitudeLongitude, _map.Zoom);
+			DynamicFeatureManager.Instance.updateMeshes();
 		}
 	}
 }

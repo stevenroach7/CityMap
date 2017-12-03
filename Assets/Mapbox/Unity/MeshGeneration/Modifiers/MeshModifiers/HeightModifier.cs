@@ -83,6 +83,7 @@ namespace Mapbox.Unity.MeshGeneration.Modifiers
 					if (float.TryParse(feature.Properties[heightDataKey].ToString(), out hf))
 					{
 						hf *= _scale;
+//						Debug.Log ("Scale " + _scale);
 						hf *= _heightMultiplier;
 						if (feature.Properties.ContainsKey("min_height"))
 						{
