@@ -69,7 +69,10 @@ namespace Mapbox.Unity.MeshGeneration.Modifiers
 
             foreach (MeshModifier mod in MeshModifiers.Where(x => x != null && x.Active))
             {
-                mod.Run(feature, meshData, tile);
+				if (feature.Properties.ContainsKey("1997-01")) // Potentially unreasonable assumption about data
+				{
+					mod.Run(feature, meshData, tile);
+				}
             }
 
             var go = CreateGameObject(meshData, parent);
@@ -79,11 +82,14 @@ namespace Mapbox.Unity.MeshGeneration.Modifiers
             bd.Init(feature);
 
             foreach (GameObjectModifier mod in GoModifiers.Where(x => x.Active))
-            {
+			{
 				mod.Run(bd, tile);
             }
 
-			DynamicFeatureManager.Instance.featureDictionary[go] = feature;
+			if (feature.Properties.ContainsKey("1997-01")) 
+			{
+				DynamicFeatureManager.Instance.featureDictionary[go] = feature;
+			}
             return go;
         }
 
@@ -105,7 +111,6 @@ namespace Mapbox.Unity.MeshGeneration.Modifiers
             }
 
             go.transform.SetParent(main.transform, false);
-
             return go;
         }
     }
