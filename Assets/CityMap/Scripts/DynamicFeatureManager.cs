@@ -76,23 +76,23 @@ namespace CityMap.scripts
 				Material topMaterial = meshRenderer.materials [0];
 				Material sideMaterial = meshRenderer.materials [1];
 
-				if (feature.Properties.ContainsKey (sideColorDataKey)) {
+				if (feature.Properties.ContainsKey(sideColorDataKey)) {
 					if (float.TryParse (feature.Properties [sideColorDataKey].ToString (), out dataValue)) {
 						float colorPercent = (dataValue - minDataValue) / (maxDataValue - minDataValue);
 						Color sideMaterialColor = Color.Lerp (Color.white, Color.blue, colorPercent);
 						sideMaterial.SetColor ("_Color", sideMaterialColor);
                         // TODO: Add top material color
-                        Color topMaterialColor;
-                        if (colorPercent <= 0.5)
-                        {
-                            topMaterialColor = new Color(0f, 0.75f, 0f, 1f);
-                        }
-                        else
-                        {
-                            topMaterialColor = new Color(0.75f, 0f, 0f, 0f);
-                        }
-
-                        topMaterial.SetColor("_Color", topMaterialColor);
+//                        Color topMaterialColor;
+//                        if (colorPercent <= 0.5)
+//                        {
+//                            topMaterialColor = new Color(0f, 0.75f, 0f, 1f);
+//                        }
+//                        else
+//                        {
+//                            topMaterialColor = new Color(0.75f, 0f, 0f, 0f);
+//                        }
+//
+//                        topMaterial.SetColor("_Color", topMaterialColor);
                     }
 				} else {
 					// TODO: set top material to missing data material
