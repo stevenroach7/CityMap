@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class UIDataManager : Singleton<UIDataManager> 
 {
@@ -8,6 +9,7 @@ public class UIDataManager : Singleton<UIDataManager>
 	public int TimeIndex = 0;
 	public List<string> MonthKeys;
 	public string cityString = "Saint Paul";
+	public bool isMapRepositionable = true;
 
 	protected UIDataManager() 
 	{
