@@ -343,7 +343,7 @@ PlayerSettings:
   logObjCUncaughtExceptions: 1
   enableCrashReportAPI: 0
   cameraUsageDescription: Used for Augmented Reality.
-  locationUsageDescription: 
+  locationUsageDescription: Used for Augmented Reality.
   microphoneUsageDescription: 
   switchNetLibKey: 
   switchSocketMemoryPoolSize: 6144
