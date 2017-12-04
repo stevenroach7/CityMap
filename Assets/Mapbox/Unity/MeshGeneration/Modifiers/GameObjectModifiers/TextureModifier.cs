@@ -61,9 +61,19 @@ namespace Mapbox.Unity.MeshGeneration.Modifiers
 							float colorPercent = (dataValue - _minDataValue) / (_maxDataValue - _minDataValue);
 							Color sideMaterialColor = Color.Lerp (Color.white, Color.blue, colorPercent);
 							sideMaterial.SetColor ("_Color", sideMaterialColor);
-							// TODO: Add top material color
-//							topMaterial.SetColor("_Color", Color.clear);
-						}
+                            // TODO: Add top material color
+                            Color topMaterialColor;
+                            if (colorPercent <= 0.5)
+                            {
+                                topMaterialColor = new Color(0f, 0.75f, 0f, 1f);
+                            }
+                            else
+                            {
+                                topMaterialColor = new Color(0.75f, 0f, 0f, 0f);
+                            }
+
+                            topMaterial.SetColor("_Color", topMaterialColor);
+                        }
 					} 
 					else 
 					{
@@ -74,7 +84,8 @@ namespace Mapbox.Unity.MeshGeneration.Modifiers
 				} else 
 				{
 					sideMaterial.SetColor("_Color", Color.clear);
-				}
+                    topMaterial.SetColor("_Color", Color.clear);
+                }
 				_meshRenderer.materials = new Material[2]
 				{
 				topMaterial,

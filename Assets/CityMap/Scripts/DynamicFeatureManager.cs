@@ -81,9 +81,19 @@ namespace CityMap.scripts
 						float colorPercent = (dataValue - minDataValue) / (maxDataValue - minDataValue);
 						Color sideMaterialColor = Color.Lerp (Color.white, Color.blue, colorPercent);
 						sideMaterial.SetColor ("_Color", sideMaterialColor);
-						// TODO: Add top material color
-						//							topMaterial.SetColor("_Color", Color.clear);
-					}
+                        // TODO: Add top material color
+                        Color topMaterialColor;
+                        if (colorPercent <= 0.5)
+                        {
+                            topMaterialColor = new Color(0f, 0.75f, 0f, 1f);
+                        }
+                        else
+                        {
+                            topMaterialColor = new Color(0.75f, 0f, 0f, 0f);
+                        }
+
+                        topMaterial.SetColor("_Color", topMaterialColor);
+                    }
 				} else {
 					// TODO: set top material to missing data material
 					topMaterial.SetColor ("_Color", Color.black);
