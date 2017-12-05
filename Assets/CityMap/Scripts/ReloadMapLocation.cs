@@ -12,8 +12,8 @@ namespace CityMap.scripts
 
 	public class ReloadMapLocation : MonoBehaviour
 	{
-		Camera _camera;
-		Vector3 _cameraStartPos;
+//		Camera _camera;
+//		Vector3 _cameraStartPos;
 		AbstractMap _map;
 
 		[SerializeField]
@@ -30,15 +30,15 @@ namespace CityMap.scripts
 
 		void Awake()
 		{
-			_camera = Camera.main;
-			_cameraStartPos = _camera.transform.position;
+//			_camera = Camera.main;
+//			_cameraStartPos = _camera.transform.position;
 			_map = FindObjectOfType<AbstractMap>();
 			_locationDropdown.onValueChanged.AddListener(Reload);
 		}
 
 		void Reload(int value)
 		{
-			_camera.transform.position = _cameraStartPos;
+//			_camera.transform.position = _cameraStartPos;
 
 			string cityString = "";
 			switch(value) { // Depends on dropdown options order
