@@ -61,7 +61,7 @@ namespace Mapbox.Unity.MeshGeneration.Modifiers
 							float colorPercent = (dataValue - _minDataValue) / (_maxDataValue - _minDataValue);
 							Color sideMaterialColor = Color.Lerp (Color.white, Color.blue, colorPercent);
 							sideMaterial.SetColor ("_Color", sideMaterialColor);
-                            // TODO: Add top material color
+                           
                             Color topMaterialColor;
                             if (colorPercent <= 0.5)
                             {
@@ -77,14 +77,14 @@ namespace Mapbox.Unity.MeshGeneration.Modifiers
 					} 
 					else 
 					{
-						// TODO: set top material to missing data material
-						topMaterial.SetColor("_Color", Color.black);
+                        Debug.Log("not running yellow coloring");
+						topMaterial.SetColor("_Color", Color.yellow);
 					}
 
 				} else 
 				{
 					sideMaterial.SetColor("_Color", Color.clear);
-                    topMaterial.SetColor("_Color", Color.clear);
+                    //topMaterial.SetColor("_Color", Color.clear);
                 }
 				_meshRenderer.materials = new Material[2]
 				{
