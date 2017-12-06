@@ -13,11 +13,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _mapIdType: 1
   _customStyle:
-    Name: 
-    Id: mapbox://styles/stevenroach7/cjaltzg4qd0qj2rlnrwrsip2z
-    Modified: 
+    Name: NeighborhoodOutlinesDarkMattEdits-copy
+    Id: mapbox://styles/stevenroach7/cjavg7eqalyph2sqvv8vxjfeq
+    Modified: 2017-12-06T19:30:15.39Z
     UserName: stevenroach7
-  _mapId: mapbox://styles/stevenroach7/cjaltzg4qd0qj2rlnrwrsip2z
+  _mapId: mapbox://styles/stevenroach7/cjavg7eqalyph2sqvv8vxjfeq
   _useCompression: 1
   _useMipMap: 0
   _useRetina: 0

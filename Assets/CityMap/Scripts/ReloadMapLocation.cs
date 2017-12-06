@@ -52,7 +52,7 @@ namespace CityMap.scripts
 				cityString = "Minneapolis";
 				break;
 			case 3: 
-				cityString = "Detroit";
+				cityString = "Saint Louis";
 				break;
 			}
 
