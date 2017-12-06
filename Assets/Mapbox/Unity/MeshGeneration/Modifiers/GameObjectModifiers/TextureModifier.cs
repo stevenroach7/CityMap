@@ -56,23 +56,26 @@ namespace Mapbox.Unity.MeshGeneration.Modifiers
 					_minDataValue = minMaxDict["min"][sideColorDataKey];
 					_maxDataValue = minMaxDict["max"][sideColorDataKey];
 
-					if (fb.Data.Properties.ContainsKey (sideColorDataKey)) {
-						if (float.TryParse (fb.Data.Properties [sideColorDataKey].ToString (), out dataValue)) {
+					if (fb.Data.Properties.ContainsKey(sideColorDataKey)) 
+					{
+						if (float.TryParse (fb.Data.Properties [sideColorDataKey].ToString (), out dataValue)) 
+						{
 							float colorPercent = (dataValue - _minDataValue) / (_maxDataValue - _minDataValue);
 							Color sideMaterialColor = Color.Lerp (Color.white, Color.blue, colorPercent);
 							sideMaterial.SetColor ("_Color", sideMaterialColor);
-                           
-                            Color topMaterialColor;
-                            if (colorPercent <= 0.5)
-                            {
-                                topMaterialColor = new Color(0f, 0.75f, 0f, 1f);
-                            }
-                            else
-                            {
-                                topMaterialColor = new Color(0.75f, 0f, 0f, 0f);
-                            }
 
-                            topMaterial.SetColor("_Color", topMaterialColor);
+                            // TODO: Add top material color
+//                            Color topMaterialColor;
+//                            if (colorPercent <= 0.5)
+//                            {
+//                                topMaterialColor = new Color(0f, 0.75f, 0f, 1f);
+//                            }
+//                            else
+//                            {
+//                                topMaterialColor = new Color(0.75f, 0f, 0f, 0f);
+//                            }
+//
+//                            topMaterial.SetColor("_Color", topMaterialColor);
                         }
 					} 
 					else 

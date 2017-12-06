@@ -67,9 +67,11 @@ namespace Mapbox.Unity.MeshGeneration.Modifiers
 				_center = f;
 			}
 
+			string cityString = UIDataManager.Instance.cityString;
             foreach (MeshModifier mod in MeshModifiers.Where(x => x != null && x.Active))
             {
-				if (feature.Properties.ContainsKey("1997-01")) // Potentially unreasonable assumption about data
+				// Make sure feature is in city and has data. Making potentially unreasonable assumptions about data here.
+				if (feature.Properties.ContainsKey("City") && feature.Properties["City"].Equals(cityString) && feature.Properties.ContainsKey("1997-01"))
 				{
 					mod.Run(feature, meshData, tile);
 				}
@@ -86,7 +88,7 @@ namespace Mapbox.Unity.MeshGeneration.Modifiers
 				mod.Run(bd, tile);
             }
 
-			if (feature.Properties.ContainsKey("1997-01")) 
+			if (feature.Properties.ContainsKey("City") && feature.Properties["City"].Equals(cityString) && feature.Properties.ContainsKey("1997-01")) 
 			{
 				DynamicFeatureManager.Instance.featureDictionary[go] = feature;
 			}

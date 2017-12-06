@@ -9,13 +9,13 @@ namespace UnityEngine.XR.iOS
 
 		bool HitTestWithResultType(ARPoint point, ARHitTestResultType resultTypes)
 		{
-			List<ARHitTestResult> hitResults = UnityARSessionNativeInterface.GetARSessionNativeInterface ().HitTest (point, resultTypes);
+			List<ARHitTestResult> hitResults = UnityARSessionNativeInterface.GetARSessionNativeInterface().HitTest(point, resultTypes);
 			if (hitResults.Count > 0) {
 				foreach (var hitResult in hitResults) {
-					Debug.Log ("Got hit!");
-					m_HitTransform.position = UnityARMatrixOps.GetPosition (hitResult.worldTransform);
-					m_HitTransform.rotation = UnityARMatrixOps.GetRotation (hitResult.worldTransform);
-					Debug.Log (string.Format ("x:{0:0.######} y:{1:0.######} z:{2:0.######}", m_HitTransform.position.x, m_HitTransform.position.y, m_HitTransform.position.z));
+					Debug.Log("Got hit!");
+					m_HitTransform.position = UnityARMatrixOps.GetPosition(hitResult.worldTransform);
+					m_HitTransform.rotation = UnityARMatrixOps.GetRotation(hitResult.worldTransform);
+					Debug.Log(string.Format ("x:{0:0.######} y:{1:0.######} z:{2:0.######}", m_HitTransform.position.x, m_HitTransform.position.y, m_HitTransform.position.z));
 					return true;
 				}
 			}

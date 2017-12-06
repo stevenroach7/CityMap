@@ -9,8 +9,8 @@
 
     public class ReloadMapTime : MonoBehaviour
 	{
-		Camera _camera;
-		Vector3 _cameraStartPos;
+//		Camera _camera;
+//		Vector3 _cameraStartPos;
 
 		[SerializeField]
 		Slider _timeSlider;
@@ -32,8 +32,8 @@
 
 		void Awake()
 		{
-			_camera = Camera.main;
-			_cameraStartPos = _camera.transform.position;
+//			_camera = Camera.main;
+//			_cameraStartPos = _camera.transform.position;
 			_timeSlider.onValueChanged.AddListener(Reload);
             _timeDisplayMap = CreateTimeDisplayMap();
 		}
@@ -75,8 +75,9 @@
 			}
 				
 			_timeLabel.text = UIDataManager.Instance.MonthKeys[UIDataManager.Instance.TimeIndex];
-            // create a dictionary that maps from 01-2017 to January 2017 and displays full month string, look at example from UIdataManager
-			_camera.transform.position = _cameraStartPos;
+            // TODO: create a dictionary that maps from 01-2017 to January 2017 and displays full month string, look at example from UIdataManager
+//			_camera.transform.position = _cameraStartPos;
+
 			DynamicFeatureManager.Instance.updateMeshes();
 		}
 
