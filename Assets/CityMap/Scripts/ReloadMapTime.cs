@@ -19,6 +19,12 @@
 		Text _timeLabel;
 
 		[SerializeField]
+		Text _heightMinMaxText;
+
+		[SerializeField]
+		Text _colorMinMaxText;
+
+		[SerializeField]
 		GameObject _minValue;
 
 		[SerializeField]
@@ -35,17 +41,36 @@
 //			_camera = Camera.main;
 //			_cameraStartPos = _camera.transform.position;
 			_timeSlider.onValueChanged.AddListener(Reload);
-            _timeDisplayMap = CreateTimeDisplayMap();
 		}
 
 		void Reload(float value)
 		{
 			UIDataManager.Instance.TimeIndex = (int) _timeSlider.value;
 
-			// Update legend
 			MapLocation mapLocation = MapLocationManager.Instance._mapLocationDict[UIDataManager.Instance.cityString];
 
+			// Update Min Max Text 
 			float maxHeight = mapLocation._housingValueMinMaxDict["max"][UIDataManager.Instance.MonthKeys[UIDataManager.Instance.TimeIndex]]; 
+			float minHeight = mapLocation._housingValueMinMaxDict["min"][UIDataManager.Instance.MonthKeys[UIDataManager.Instance.TimeIndex]]; 
+			_heightMinMaxText.text = "Min: " + String.Format("{0:0}", minHeight) + " Max: " + String.Format("{0:0}", maxHeight);
+
+
+			string timeString = UIDataManager.Instance.MonthKeys[UIDataManager.Instance.TimeIndex];
+			string sideColorDataKey;
+			if ((float.Parse(timeString.Substring (0, 4))) > 2005)
+			{
+				sideColorDataKey = "2010-minorityPercent";
+			} 
+			else 
+			{
+				sideColorDataKey = "2000-minorityPercent";
+			}
+
+			float maxColor = mapLocation._minorityPercentMinMaxDict["max"][sideColorDataKey]; 
+			float minColor = mapLocation._minorityPercentMinMaxDict["min"][sideColorDataKey]; 
+			_colorMinMaxText.text = "Min: " + String.Format("{0:0.00}", minColor) + " Max: " + String.Format("{0:0.00}", maxColor);
+
+			// Update legend
 			int maxHeightRoundedUp = (int) Math.Round(maxHeight / 10, MidpointRounding.AwayFromZero) * 10;
 			float barYScale = maxHeightRoundedUp / 4880f;
 
@@ -80,10 +105,5 @@
 
 			DynamicFeatureManager.Instance.updateMeshes();
 		}
-
-        Dictionary<string, string> CreateTimeDisplayMap()
-        {
-            return null;
-        }
 	}
 }

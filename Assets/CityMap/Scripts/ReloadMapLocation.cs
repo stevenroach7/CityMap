@@ -20,6 +20,12 @@ namespace CityMap.scripts
 		Dropdown _locationDropdown;
 
 		[SerializeField]
+		Text _heightMinMaxText;
+
+		[SerializeField]
+		Text _colorMinMaxText;
+
+		[SerializeField]
 		GameObject _minValue;
 
 		[SerializeField]
@@ -56,7 +62,27 @@ namespace CityMap.scripts
 			MapLocation mapLocation = MapLocationManager.Instance._mapLocationDict[cityString];
 			UIDataManager.Instance.cityString = mapLocation._cityString;
 
+			// Update Min Max Text 
 			float maxHeight = mapLocation._housingValueMinMaxDict["max"][UIDataManager.Instance.MonthKeys[UIDataManager.Instance.TimeIndex]]; 
+			float minHeight = mapLocation._housingValueMinMaxDict["min"][UIDataManager.Instance.MonthKeys[UIDataManager.Instance.TimeIndex]]; 
+			_heightMinMaxText.text = "Min: " + String.Format("{0:0}", minHeight) + " Max: " + String.Format("{0:0}", maxHeight);
+
+
+			string timeString = UIDataManager.Instance.MonthKeys[UIDataManager.Instance.TimeIndex];
+			string sideColorDataKey;
+			if ((float.Parse(timeString.Substring (0, 4))) > 2005)
+			{
+				sideColorDataKey = "2010-minorityPercent";
+			} 
+			else 
+			{
+				sideColorDataKey = "2000-minorityPercent";
+			}
+
+			float maxColor = mapLocation._minorityPercentMinMaxDict["max"][sideColorDataKey]; 
+			float minColor = mapLocation._minorityPercentMinMaxDict["min"][sideColorDataKey]; 
+			_colorMinMaxText.text = "Min: " + String.Format("{0:0.00}", minColor) + " Max: " + String.Format("{0:0.00}", maxColor);
+
 			int maxHeightRoundedUp = (int) Math.Round(maxHeight / 10, MidpointRounding.AwayFromZero) * 10;
 			float barYScale = maxHeightRoundedUp / 4880f;
 
