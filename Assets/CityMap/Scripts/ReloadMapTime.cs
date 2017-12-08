@@ -24,15 +24,6 @@
 		[SerializeField]
 		Text _colorMinMaxText;
 
-		[SerializeField]
-		GameObject _minValue;
-
-		[SerializeField]
-		GameObject _maxValue;
-
-		[SerializeField]
-		GameObject _legendBar;
-
         private Dictionary<string, string> _timeDisplayMap;
 
 
@@ -69,35 +60,6 @@
 			float maxColor = mapLocation._minorityPercentMinMaxDict["max"][sideColorDataKey]; 
 			float minColor = mapLocation._minorityPercentMinMaxDict["min"][sideColorDataKey]; 
 			_colorMinMaxText.text = "Min: " + String.Format("{0:0.00}", minColor) + " Max: " + String.Format("{0:0.00}", maxColor);
-
-			// Update legend
-			int maxHeightRoundedUp = (int) Math.Round(maxHeight / 10, MidpointRounding.AwayFromZero) * 10;
-			float barYScale = maxHeightRoundedUp / 4880f;
-
-			Transform barTransform = (Transform)_legendBar.GetComponent(typeof(Transform));
-			if (barTransform != null) 
-			{
-				Vector3 tempScale = barTransform.localScale;
-				tempScale.y = barYScale;
-				barTransform.localScale = tempScale;
-				Vector3 tempPosition = barTransform.position;
-				tempPosition.y = tempScale.y / 2;
-				barTransform.position = tempPosition;
-			}
-
-			TextMesh maxTextMesh = (TextMesh) _maxValue.GetComponent(typeof(TextMesh));
-			if (maxTextMesh != null) 
-			{
-				maxTextMesh.text = maxHeightRoundedUp.ToString();
-			}
-
-			Transform maxValTransform = (Transform)_maxValue.GetComponent(typeof(Transform));
-			if (maxValTransform != null && barYScale > 0) 
-			{
-				Vector3 tempPosition = maxValTransform.position;
-				tempPosition.y = barYScale + 0.00595737704f;
-				maxValTransform.position = tempPosition;
-			}
 				
 			_timeLabel.text = UIDataManager.Instance.MonthKeys[UIDataManager.Instance.TimeIndex];
             // TODO: create a dictionary that maps from 01-2017 to January 2017 and displays full month string, look at example from UIdataManager
