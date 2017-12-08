@@ -71,7 +71,7 @@ namespace Mapbox.Unity.MeshGeneration.Modifiers
             foreach (MeshModifier mod in MeshModifiers.Where(x => x != null && x.Active))
             {
 				// Make sure feature is in city and has data. Making potentially unreasonable assumptions about data here.
-				if (feature.Properties.ContainsKey("City") && feature.Properties["City"].Equals(cityString) && feature.Properties.ContainsKey("1997-01"))
+				if (feature.Properties.ContainsKey("City") && feature.Properties["City"].Equals(cityString))
 				{
 					mod.Run(feature, meshData, tile);
 				}
@@ -88,7 +88,8 @@ namespace Mapbox.Unity.MeshGeneration.Modifiers
 				mod.Run(bd, tile);
             }
 
-			if (feature.Properties.ContainsKey("City") && feature.Properties["City"].Equals(cityString) && feature.Properties.ContainsKey("1997-01")) 
+			// Cache Missing Data Features
+			if (feature.Properties.ContainsKey("City") && feature.Properties["City"].Equals(cityString)) 
 			{
 				DynamicFeatureManager.Instance.featureDictionary[go] = feature;
 			}

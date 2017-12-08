@@ -41,6 +41,7 @@ namespace Mapbox.Unity.MeshGeneration.Modifiers
 		public override void Run(FeatureBehaviour fb, UnityTile tile)
         {
 			var _meshRenderer = fb.gameObject.AddComponent<MeshRenderer>();
+			string sideColorDataKey = UIDataManager.Instance.MonthKeys[UIDataManager.Instance.TimeIndex];
 			if (_textureSides && _sideMaterials.Length > 0)
 			{
 				float dataValue = _minDataValue;
@@ -48,9 +49,9 @@ namespace Mapbox.Unity.MeshGeneration.Modifiers
 				Material topMaterial = new Material(sideMaterial.shader);
 
 				_cityString = UIDataManager.Instance.cityString;
+
 				if ((fb.Data.Properties.ContainsKey("City")) && (fb.Data.Properties ["City"].Equals(_cityString))) 
 				{
-					string sideColorDataKey = UIDataManager.Instance.MonthKeys[UIDataManager.Instance.TimeIndex];
 
 					Dictionary<string, Dictionary<string, float>> minMaxDict = MapLocationManager.Instance._mapLocationDict[UIDataManager.Instance.cityString]._minMaxDict;
 					_minDataValue = minMaxDict["min"][sideColorDataKey];
@@ -80,8 +81,7 @@ namespace Mapbox.Unity.MeshGeneration.Modifiers
 					} 
 					else 
 					{
-                        Debug.Log("not running yellow coloring");
-						topMaterial.SetColor("_Color", Color.yellow);
+						topMaterial.SetColor("_Color", Color.red);
 					}
 
 				} else 
@@ -103,7 +103,7 @@ namespace Mapbox.Unity.MeshGeneration.Modifiers
 			   };
 			}
 
-			if (_useSatelliteTexture)
+			if (_useSatelliteTexture && fb.Data.Properties.ContainsKey(sideColorDataKey))
 			{
 				var _tile = fb.gameObject.GetComponent<UnityTile>();
 				var t = fb.transform;

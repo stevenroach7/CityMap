@@ -96,7 +96,8 @@ namespace CityMap.scripts
                     }
 				} else {
 					// TODO: set top material to missing data material
-					topMaterial.SetColor ("_Color", Color.black);
+					topMaterial.SetColor("_Color", Color.red);
+
 				}
 			}
 		}
