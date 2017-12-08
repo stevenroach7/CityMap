@@ -41,7 +41,18 @@ namespace Mapbox.Unity.MeshGeneration.Modifiers
 		public override void Run(FeatureBehaviour fb, UnityTile tile)
         {
 			var _meshRenderer = fb.gameObject.AddComponent<MeshRenderer>();
-			string sideColorDataKey = UIDataManager.Instance.MonthKeys[UIDataManager.Instance.TimeIndex];
+
+			string timeString = UIDataManager.Instance.MonthKeys[UIDataManager.Instance.TimeIndex];
+			string sideColorDataKey;
+			if ((float.Parse(timeString.Substring (0, 4))) > 2005)
+			{
+				sideColorDataKey = "2010-minorityPercent";
+			} 
+			else 
+			{
+				sideColorDataKey = "2000-minorityPercent";
+			}
+
 			if (_textureSides && _sideMaterials.Length > 0)
 			{
 				float dataValue = _minDataValue;
@@ -53,7 +64,7 @@ namespace Mapbox.Unity.MeshGeneration.Modifiers
 				if ((fb.Data.Properties.ContainsKey("City")) && (fb.Data.Properties ["City"].Equals(_cityString))) 
 				{
 
-					Dictionary<string, Dictionary<string, float>> minMaxDict = MapLocationManager.Instance._mapLocationDict[UIDataManager.Instance.cityString]._minMaxDict;
+					Dictionary<string, Dictionary<string, float>> minMaxDict = MapLocationManager.Instance._mapLocationDict[UIDataManager.Instance.cityString]._minorityPercentMinMaxDict;
 					_minDataValue = minMaxDict["min"][sideColorDataKey];
 					_maxDataValue = minMaxDict["max"][sideColorDataKey];
 

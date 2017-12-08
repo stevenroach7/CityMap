@@ -65,11 +65,20 @@ namespace CityMap.scripts
 				mesh.vertices = vertices;
 				mesh.RecalculateBounds();
 
-				// Update texture material
-				string sideColorDataKey = UIDataManager.Instance.MonthKeys [UIDataManager.Instance.TimeIndex];
-				Dictionary<string, Dictionary<string, float>> minMaxDict = MapLocationManager.Instance._mapLocationDict [UIDataManager.Instance.cityString]._minMaxDict;
-				float minDataValue = minMaxDict ["min"] [sideColorDataKey];
-				float maxDataValue = minMaxDict ["max"] [sideColorDataKey];
+				string timeString = UIDataManager.Instance.MonthKeys[UIDataManager.Instance.TimeIndex];
+				string sideColorDataKey;
+				if ((float.Parse(timeString.Substring (0, 4))) > 2005)
+				{
+					sideColorDataKey = "2010-minorityPercent";
+				} 
+				else 
+				{
+					sideColorDataKey = "2000-minorityPercent";
+				}
+
+				Dictionary<string, Dictionary<string, float>> minMaxDict = MapLocationManager.Instance._mapLocationDict[UIDataManager.Instance.cityString]._minorityPercentMinMaxDict;
+				float minDataValue = minMaxDict["min"][sideColorDataKey];
+				float maxDataValue = minMaxDict["max"][sideColorDataKey];
 
 				float dataValue = minDataValue;
 				MeshRenderer meshRenderer = go.GetComponent<MeshRenderer> ();

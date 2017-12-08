@@ -45,21 +45,18 @@ namespace CityMap.scripts
 			case 0:
 				cityString = "Saint Paul";
 				break;
-			case 1: 
-				cityString = "Seattle";
-				break;
-			case 2:
+//			case 1: 
+//				cityString = "Seattle";
+//				break;
+			case 1:
 				cityString = "Minneapolis";
-				break;
-			case 3: 
-				cityString = "Saint Louis";
 				break;
 			}
 
 			MapLocation mapLocation = MapLocationManager.Instance._mapLocationDict[cityString];
 			UIDataManager.Instance.cityString = mapLocation._cityString;
 
-			float maxHeight = mapLocation._minMaxDict["max"][UIDataManager.Instance.MonthKeys[UIDataManager.Instance.TimeIndex]]; 
+			float maxHeight = mapLocation._housingValueMinMaxDict["max"][UIDataManager.Instance.MonthKeys[UIDataManager.Instance.TimeIndex]]; 
 			int maxHeightRoundedUp = (int) Math.Round(maxHeight / 10, MidpointRounding.AwayFromZero) * 10;
 			float barYScale = maxHeightRoundedUp / 4880f;
 

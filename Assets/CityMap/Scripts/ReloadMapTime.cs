@@ -45,7 +45,7 @@
 			// Update legend
 			MapLocation mapLocation = MapLocationManager.Instance._mapLocationDict[UIDataManager.Instance.cityString];
 
-			float maxHeight = mapLocation._minMaxDict["max"][UIDataManager.Instance.MonthKeys[UIDataManager.Instance.TimeIndex]]; 
+			float maxHeight = mapLocation._housingValueMinMaxDict["max"][UIDataManager.Instance.MonthKeys[UIDataManager.Instance.TimeIndex]]; 
 			int maxHeightRoundedUp = (int) Math.Round(maxHeight / 10, MidpointRounding.AwayFromZero) * 10;
 			float barYScale = maxHeightRoundedUp / 4880f;
 

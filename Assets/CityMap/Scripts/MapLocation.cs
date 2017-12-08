@@ -14,7 +14,8 @@ namespace CityMap.scripts
 		public int _northTiles;
 		public int _eastTiles;
 		public int _southTiles;
-		public Dictionary<string, Dictionary<string, float>> _minMaxDict;
+		public Dictionary<string, Dictionary<string, float>> _housingValueMinMaxDict;
+		public Dictionary<string, Dictionary<string, float>> _minorityPercentMinMaxDict;
 	}
 }
 
