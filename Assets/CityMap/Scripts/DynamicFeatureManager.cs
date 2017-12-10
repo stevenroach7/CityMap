@@ -77,8 +77,8 @@ namespace CityMap.scripts
 				}
 
 				Dictionary<string, Dictionary<string, float>> minMaxDict = MapLocationManager.Instance._mapLocationDict[UIDataManager.Instance.cityString]._minorityPercentMinMaxDict;
-				float minDataValue = minMaxDict["min"][sideColorDataKey];
-				float maxDataValue = minMaxDict["max"][sideColorDataKey];
+				float minDataValue = 0;
+				float maxDataValue = 100;
 
 				float dataValue = minDataValue;
 				MeshRenderer meshRenderer = go.GetComponent<MeshRenderer> ();
@@ -88,8 +88,10 @@ namespace CityMap.scripts
 				if (feature.Properties.ContainsKey(sideColorDataKey)) {
 					if (float.TryParse (feature.Properties [sideColorDataKey].ToString (), out dataValue)) {
 						float colorPercent = (dataValue - minDataValue) / (maxDataValue - minDataValue);
-						Color sideMaterialColor = Color.Lerp (Color.white, Color.blue, colorPercent);
-						sideMaterial.SetColor ("_Color", sideMaterialColor);
+						LABColor minColorVal = new LABColor(0f, 25f, -100f);
+						LABColor maxColorVal = new LABColor (100f, 0f, 0f);
+						LABColor sideMaterialColor = LABColor.Lerp(maxColorVal, minColorVal, colorPercent);
+						sideMaterial.SetColor ("_Color", sideMaterialColor.ToColor());
                         // TODO: Add top material color
 //                        Color topMaterialColor;
 //                        if (colorPercent <= 0.5)

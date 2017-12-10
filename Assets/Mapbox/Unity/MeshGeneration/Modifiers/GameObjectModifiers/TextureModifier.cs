@@ -65,16 +65,18 @@ namespace Mapbox.Unity.MeshGeneration.Modifiers
 				{
 
 					Dictionary<string, Dictionary<string, float>> minMaxDict = MapLocationManager.Instance._mapLocationDict[UIDataManager.Instance.cityString]._minorityPercentMinMaxDict;
-					_minDataValue = minMaxDict["min"][sideColorDataKey];
-					_maxDataValue = minMaxDict["max"][sideColorDataKey];
+					_minDataValue = 0;
+					_maxDataValue = 100;
 
 					if (fb.Data.Properties.ContainsKey(sideColorDataKey)) 
 					{
 						if (float.TryParse (fb.Data.Properties [sideColorDataKey].ToString (), out dataValue)) 
 						{
 							float colorPercent = (dataValue - _minDataValue) / (_maxDataValue - _minDataValue);
-							Color sideMaterialColor = Color.Lerp (Color.white, Color.blue, colorPercent);
-							sideMaterial.SetColor ("_Color", sideMaterialColor);
+							LABColor minColorVal = new LABColor(0f, 25f, -100f);
+							LABColor maxColorVal = new LABColor (100f, 0f, 0f);
+							LABColor sideMaterialColor = LABColor.Lerp(maxColorVal, minColorVal, colorPercent);
+							sideMaterial.SetColor ("_Color", sideMaterialColor.ToColor());
 
                             // TODO: Add top material color
 //                            Color topMaterialColor;
