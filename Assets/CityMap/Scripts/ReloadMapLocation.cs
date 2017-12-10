@@ -43,11 +43,11 @@ namespace CityMap.scripts
 			case 0:
 				cityString = "Saint Paul";
 				break;
-//			case 1: 
-//				cityString = "Seattle";
-//				break;
 			case 1:
 				cityString = "Minneapolis";
+				break;
+			case 2: 
+				cityString = "Seattle";
 				break;
 			}
 

@@ -1324,6 +1324,8 @@ MonoBehaviour:
       m_Image: {fileID: 0}
     - m_Text: Minneapolis
       m_Image: {fileID: 0}
+    - m_Text: Seattle
+      m_Image: {fileID: 0}
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -2197,7 +2199,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: e5a143c78e8e8461eb8922cab99e3cdc, type: 3}
+  m_Sprite: {fileID: 21300000, guid: fe353bd0d22f14516808ebfe8392e8c7, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
