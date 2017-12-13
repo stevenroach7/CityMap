@@ -76,40 +76,30 @@ namespace CityMap.scripts
 					sideColorDataKey = "2000-minorityPercent";
 				}
 
-				Dictionary<string, Dictionary<string, float>> minMaxDict = MapLocationManager.Instance._mapLocationDict[UIDataManager.Instance.cityString]._minorityPercentMinMaxDict;
 				float minDataValue = 0;
 				float maxDataValue = 100;
 
 				float dataValue = minDataValue;
 				MeshRenderer meshRenderer = go.GetComponent<MeshRenderer> ();
-				Material topMaterial = meshRenderer.materials [0];
-				Material sideMaterial = meshRenderer.materials [1];
+				Material topMaterial = meshRenderer.materials[0];
+				Material sideMaterial = meshRenderer.materials[1];
 
-				if (feature.Properties.ContainsKey(sideColorDataKey)) {
+				if (feature.Properties.ContainsKey(sideColorDataKey) && feature.Properties.ContainsKey(heightDataKey))
+				{
 					if (float.TryParse (feature.Properties [sideColorDataKey].ToString (), out dataValue)) {
 						float colorPercent = (dataValue - minDataValue) / (maxDataValue - minDataValue);
 						LABColor minColorVal = new LABColor(0f, 25f, -100f);
 						LABColor maxColorVal = new LABColor (100f, 0f, 0f);
 						LABColor sideMaterialColor = LABColor.Lerp(maxColorVal, minColorVal, colorPercent);
 						sideMaterial.SetColor ("_Color", sideMaterialColor.ToColor());
-                        // TODO: Add top material color
-//                        Color topMaterialColor;
-//                        if (colorPercent <= 0.5)
-//                        {
-//                            topMaterialColor = new Color(0f, 0.75f, 0f, 1f);
-//                        }
-//                        else
-//                        {
-//                            topMaterialColor = new Color(0.75f, 0f, 0f, 0f);
-//                        }
-//
-//                        topMaterial.SetColor("_Color", topMaterialColor);
                     }
-				} else {
-					// TODO: set top material to missing data material
-					topMaterial.SetColor("_Color", Color.red);
-
-				}
+				} 
+//				else 
+//				{
+//					// TODO: set top material to missing data material
+//					topMaterial.SetColor("_Color", new Color(229f / 255f, 117f / 255f, 52f / 255f, 1f));
+//					topMaterial.SetColor("_Color", Color.clear);
+//				}
 			}
 		}
 

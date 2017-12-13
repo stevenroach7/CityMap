@@ -53,6 +53,8 @@ namespace Mapbox.Unity.MeshGeneration.Modifiers
 				sideColorDataKey = "2000-minorityPercent";
 			}
 
+			string heightDataKey = UIDataManager.Instance.MonthKeys[UIDataManager.Instance.TimeIndex];
+
 			if (_textureSides && _sideMaterials.Length > 0)
 			{
 				float dataValue = _minDataValue;
@@ -64,11 +66,10 @@ namespace Mapbox.Unity.MeshGeneration.Modifiers
 				if ((fb.Data.Properties.ContainsKey("City")) && (fb.Data.Properties ["City"].Equals(_cityString))) 
 				{
 
-					Dictionary<string, Dictionary<string, float>> minMaxDict = MapLocationManager.Instance._mapLocationDict[UIDataManager.Instance.cityString]._minorityPercentMinMaxDict;
 					_minDataValue = 0;
 					_maxDataValue = 100;
 
-					if (fb.Data.Properties.ContainsKey(sideColorDataKey)) 
+					if (fb.Data.Properties.ContainsKey(sideColorDataKey) && fb.Data.Properties.ContainsKey(heightDataKey)) 
 					{
 						if (float.TryParse (fb.Data.Properties [sideColorDataKey].ToString (), out dataValue)) 
 						{
@@ -77,27 +78,15 @@ namespace Mapbox.Unity.MeshGeneration.Modifiers
 							LABColor maxColorVal = new LABColor (100f, 0f, 0f);
 							LABColor sideMaterialColor = LABColor.Lerp(maxColorVal, minColorVal, colorPercent);
 							sideMaterial.SetColor ("_Color", sideMaterialColor.ToColor());
-
-                            // TODO: Add top material color
-//                            Color topMaterialColor;
-//                            if (colorPercent <= 0.5)
-//                            {
-//                                topMaterialColor = new Color(0f, 0.75f, 0f, 1f);
-//                            }
-//                            else
-//                            {
-//                                topMaterialColor = new Color(0.75f, 0f, 0f, 0f);
-//                            }
-//
-//                            topMaterial.SetColor("_Color", topMaterialColor);
                         }
 					} 
-					else 
-					{
-						topMaterial.SetColor("_Color", Color.red);
-					}
-
-				} else 
+//					else 
+//					{
+//						topMaterial.SetColor("_Color", new Color(229f / 255f, 117f / 255f, 52f / 255f, 1f));
+//						topMaterial.SetColor("_Color", Color.clear);
+//					}
+				} 
+				else 
 				{
 					sideMaterial.SetColor("_Color", Color.clear);
                     //topMaterial.SetColor("_Color", Color.clear);
@@ -116,7 +105,7 @@ namespace Mapbox.Unity.MeshGeneration.Modifiers
 			   };
 			}
 
-			if (_useSatelliteTexture && fb.Data.Properties.ContainsKey(sideColorDataKey))
+			if (_useSatelliteTexture)
 			{
 				var _tile = fb.gameObject.GetComponent<UnityTile>();
 				var t = fb.transform;
