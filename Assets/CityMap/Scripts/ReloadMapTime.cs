@@ -24,6 +24,9 @@
 		[SerializeField]
 		Text _colorMinMaxText;
 
+		[SerializeField]
+		Text _colorDataSourceText;
+
         private Dictionary<string, string> _timeDisplayMap;
 
 
@@ -51,10 +54,12 @@
 			if ((float.Parse(timeString.Substring (0, 4))) > 2005)
 			{
 				sideColorDataKey = "2010-minorityPercent";
+				_colorDataSourceText.text = "Data Source Census 2010";
 			} 
 			else 
 			{
 				sideColorDataKey = "2000-minorityPercent";
+				_colorDataSourceText.text = "Data Source Census 2000";
 			}
 
 			float maxColor = mapLocation._minorityPercentMinMaxDict["max"][sideColorDataKey]; 

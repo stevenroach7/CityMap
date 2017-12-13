@@ -13,11 +13,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _mapIdType: 1
   _customStyle:
-    Name: CityMapStyle
-    Id: mapbox://styles/stevenroach7/cjb0c80roqklo2snt49zo9ekv
-    Modified: 2017-12-10T05:38:20.744Z
+    Name: CityMapStyle-copy
+    Id: mapbox://styles/stevenroach7/cjb2gmrtu6s2v2spga8stuq34
+    Modified: 2017-12-11T17:16:32.314Z
     UserName: stevenroach7
-  _mapId: mapbox://styles/stevenroach7/cjb0c80roqklo2snt49zo9ekv
+  _mapId: mapbox://styles/stevenroach7/cjb2gmrtu6s2v2spga8stuq34
   _useCompression: 1
   _useMipMap: 0
   _useRetina: 0
