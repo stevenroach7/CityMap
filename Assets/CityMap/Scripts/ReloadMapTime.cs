@@ -67,7 +67,6 @@
 			_colorMinMaxText.text = "Min: " + String.Format("{0:0.00}", minColor) + " Max: " + String.Format("{0:0.00}", maxColor);
 				
 			_timeLabel.text = UIDataManager.Instance.MonthKeys[UIDataManager.Instance.TimeIndex];
-            // TODO: create a dictionary that maps from 01-2017 to January 2017 and displays full month string, look at example from UIdataManager
 //			_camera.transform.position = _cameraStartPos;
 
 			DynamicFeatureManager.Instance.updateMeshes();

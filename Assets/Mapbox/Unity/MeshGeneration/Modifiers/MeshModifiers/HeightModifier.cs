@@ -3,6 +3,7 @@ namespace Mapbox.Unity.MeshGeneration.Modifiers
 	using System.Collections.Generic;
 	using UnityEngine;
 	using Mapbox.Unity.MeshGeneration.Data;
+	using System;
 
 	public enum ExtrusionType
 	{
@@ -37,12 +38,18 @@ namespace Mapbox.Unity.MeshGeneration.Modifiers
 		private bool _createSideWalls = true;
 
 		[SerializeField]
+		[Tooltip("Create side walls as separate submesh.")]
+		private bool _separateSubmesh = true;
+
+		[SerializeField]
 		private float _heightMultiplier = 1;
 
 		[SerializeField]
 		private string _cityString = "";
 
 		public override ModifierType Type { get { return ModifierType.Preprocess; } }
+
+		private int _counter;
 
 		public override void Run(VectorFeatureUnity feature, MeshData md, float scale)
 		{
@@ -52,13 +59,11 @@ namespace Mapbox.Unity.MeshGeneration.Modifiers
 
 		public override void Run(VectorFeatureUnity feature, MeshData md, UnityTile tile = null)
 		{
-
 			if (md.Vertices.Count == 0 || feature == null || feature.Points.Count < 1)
 				return;
 
-			_cityString = UIDataManager.Instance.cityString;
-
 			// Make sure feature is in desired city.
+			_cityString = UIDataManager.Instance.cityString;
 			if (!feature.Properties.ContainsKey("City")) 
 			{
 				return;
@@ -77,13 +82,14 @@ namespace Mapbox.Unity.MeshGeneration.Modifiers
 			float hf = _height * _scale;
 			if (!_forceHeight)
 			{
+
 				string heightDataKey = UIDataManager.Instance.MonthKeys[UIDataManager.Instance.TimeIndex];
 				if (feature.Properties.ContainsKey(heightDataKey))
 				{
 					if (float.TryParse(feature.Properties[heightDataKey].ToString(), out hf))
 					{
 						hf *= _scale;
-//						Debug.Log ("Scale " + _scale);
+						//						Debug.Log ("Scale " + _scale);
 						hf *= _heightMultiplier;
 						if (feature.Properties.ContainsKey("min_height"))
 						{
@@ -94,25 +100,25 @@ namespace Mapbox.Unity.MeshGeneration.Modifiers
 				}
 				if (feature.Properties.ContainsKey("ele"))
 				{
-					if (float.TryParse(feature.Properties["ele"].ToString(), out hf))
-					{
-						hf *= _scale;
-					}
+					//"ele" is used in contour layer for elevation
+					hf = Convert.ToSingle(feature.Properties["ele"]);
+					hf *= _scale;
 				}
 			}
 
 			var max = md.Vertices[0].y;
 			var min = md.Vertices[0].y;
+			_counter = md.Vertices.Count;
 			if (_flatTops)
 			{
-				for (int i = 0; i < md.Vertices.Count; i++)
+				for (int i = 0; i < _counter; i++)
 				{
 					if (md.Vertices[i].y > max)
 						max = md.Vertices[i].y;
 					else if (md.Vertices[i].y < min)
 						min = md.Vertices[i].y;
 				}
-				for (int i = 0; i < md.Vertices.Count; i++)
+				for (int i = 0; i < _counter; i++)
 				{
 					md.Vertices[i] = new Vector3(md.Vertices[i].x, max + minHeight + hf, md.Vertices[i].z);
 				}
@@ -120,14 +126,14 @@ namespace Mapbox.Unity.MeshGeneration.Modifiers
 			}
 			else
 			{
-				for (int i = 0; i < md.Vertices.Count; i++)
+				for (int i = 0; i < _counter; i++)
 				{
 					md.Vertices[i] = new Vector3(md.Vertices[i].x, md.Vertices[i].y + minHeight + hf, md.Vertices[i].z);
 				}
 			}
 
-			var count = md.Vertices.Count;
-			md.Vertices.Capacity = count + md.Edges.Count * 2;
+
+			md.Vertices.Capacity = _counter + md.Edges.Count * 2;
 			float d = 0f;
 			Vector3 v1;
 			Vector3 v2;
@@ -135,10 +141,15 @@ namespace Mapbox.Unity.MeshGeneration.Modifiers
 
 			if (_createSideWalls)
 			{
-				var wallTri = new List<int>(md.Edges.Count * 3);
-				var wallUv = new List<Vector2>(md.Edges.Count * 2);
-				Vector3 norm = Vector3.zero;
-				for (int i = 0; i < md.Edges.Count; i += 2)
+				_counter = md.Edges.Count;
+				var wallTri = new List<int>(_counter * 3);
+				var wallUv = new List<Vector2>(_counter * 2);
+				Vector3 norm = Constants.Math.Vector3Zero;
+
+				md.Vertices.Capacity = md.Vertices.Count + _counter * 2;
+				md.Normals.Capacity = md.Normals.Count + _counter * 2;
+
+				for (int i = 0; i < _counter; i += 2)
 				{
 					v1 = md.Vertices[md.Edges[i]];
 					v2 = md.Vertices[md.Edges[i + 1]];
@@ -148,9 +159,9 @@ namespace Mapbox.Unity.MeshGeneration.Modifiers
 					md.Vertices.Add(new Vector3(v1.x, v1.y - hf, v1.z));
 					md.Vertices.Add(new Vector3(v2.x, v2.y - hf, v2.z));
 
-					d = (v2 - v1).magnitude;
-
-					norm = Vector3.Cross(v2 - v1, md.Vertices[ind + 2] - v1).normalized;
+					//d = (v2 - v1).magnitude;
+					d = Mathf.Sqrt((v2.x - v1.x) + (v2.y - v1.y) + (v2.z - v1.z));
+					norm = Vector3.Normalize(Vector3.Cross(v2 - v1, md.Vertices[ind + 2] - v1));
 					md.Normals.Add(norm);
 					md.Normals.Add(norm);
 					md.Normals.Add(norm);
@@ -170,7 +181,15 @@ namespace Mapbox.Unity.MeshGeneration.Modifiers
 					wallTri.Add(ind + 2);
 				}
 
-				md.Triangles.Add(wallTri);
+				if(_separateSubmesh)
+				{
+					md.Triangles.Add(wallTri);
+				}
+				else
+				{
+					md.Triangles.Capacity = md.Triangles.Count + wallTri.Count;
+					md.Triangles[0].AddRange(wallTri);
+				}
 				md.UV[0].AddRange(wallUv);
 			}
 		}
