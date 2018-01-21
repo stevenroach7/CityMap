@@ -26,17 +26,17 @@ namespace UnityEngine.XR.iOS
 		void Update () {
 			if (UIDataManager.Instance.isMapRepositionable && Input.touchCount > 0 && m_HitTransform != null)
 			{
+
 				var touch = Input.GetTouch(0);
 				if (touch.phase == TouchPhase.Began || touch.phase == TouchPhase.Moved)
 				{
 					var screenPosition = Camera.main.ScreenToViewportPoint(touch.position);
-
 					if (screenPosition.y > 0.2) { // Make sure touch is above bottom of screen
 
 						ARPoint point = new ARPoint {
 							x = screenPosition.x,
 							y = screenPosition.y
-						};
+						};	
 
 						// prioritize reults types
 						ARHitTestResultType[] resultTypes = {
@@ -49,6 +49,7 @@ namespace UnityEngine.XR.iOS
 
 						foreach (ARHitTestResultType resultType in resultTypes) {
 							if (HitTestWithResultType (point, resultType)) {
+								Debug.Log ("Hit Test True");
 								return;
 							}
 						}
