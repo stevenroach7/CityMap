@@ -3217,7 +3217,7 @@ MonoBehaviour:
   _tileProvider: {fileID: 1904112042}
   _mapVisualizer: {fileID: 11400000, guid: cc36e54c836294102b201d1b72768cfa, type: 2}
   _unityTileSize: 0.1
-  _snapMapHeightToZero: 1
+  _snapMapHeightToZero: 0
 --- !u!4 &1904112044
 Transform:
   m_ObjectHideFlags: 0

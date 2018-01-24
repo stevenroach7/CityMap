@@ -31,6 +31,7 @@ namespace UnityEngine.XR.iOS
 				if (touch.phase == TouchPhase.Began || touch.phase == TouchPhase.Moved)
 				{
 					var screenPosition = Camera.main.ScreenToViewportPoint(touch.position);
+
 					if (screenPosition.y > 0.2) { // Make sure touch is above bottom of screen
 
 						ARPoint point = new ARPoint {
