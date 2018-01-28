@@ -66,7 +66,7 @@
 			float minColor = mapLocation._minorityPercentMinMaxDict["min"][sideColorDataKey]; 
 			_colorMinMaxText.text = "Min: " + String.Format("{0:0.00}", minColor) + " Max: " + String.Format("{0:0.00}", maxColor);
 				
-			_timeLabel.text = UIDataManager.Instance.MonthKeys[UIDataManager.Instance.TimeIndex];
+			_timeLabel.text = timeString.Substring (5, 2) + "/" + timeString.Substring (0, 4);
 //			_camera.transform.position = _cameraStartPos;
 
 			DynamicFeatureManager.Instance.updateMeshes();
