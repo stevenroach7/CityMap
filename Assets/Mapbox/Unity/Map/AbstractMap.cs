@@ -5,6 +5,7 @@ namespace Mapbox.Unity.Map
 	using Utils;
 	using UnityEngine;
 	using Mapbox.Map;
+	using CityMap.scripts;
 
 	/// <summary>
 	/// Abstract Map (Basic Map etc)
@@ -152,7 +153,8 @@ namespace Mapbox.Unity.Map
 		{
 			_worldRelativeScale = scale;
 		}
-		public event Action OnInitialized = delegate { };
+
+		public event Action OnInitialized = delegate {};
 
 		protected virtual void Awake()
 		{
