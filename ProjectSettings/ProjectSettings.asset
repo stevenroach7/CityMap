@@ -40,7 +40,8 @@ PlayerSettings:
   m_SplashScreenLogos: []
   m_SplashScreenBackgroundLandscape: {fileID: 0}
   m_SplashScreenBackgroundPortrait: {fileID: 0}
-  m_VirtualRealitySplashScreen: {fileID: 0}
+  m_VirtualRealitySplashScreen: {fileID: 2800000, guid: 0a658347b53924f29b61908d55dc69a5,
+    type: 3}
   m_HolographicTrackingLossScreen: {fileID: 0}
   defaultScreenWidth: 1024
   defaultScreenHeight: 768
@@ -176,16 +177,25 @@ PlayerSettings:
   uIStatusBarHidden: 1
   uIExitOnSuspend: 0
   uIStatusBarStyle: 0
-  iPhoneSplashScreen: {fileID: 0}
-  iPhoneHighResSplashScreen: {fileID: 0}
-  iPhoneTallHighResSplashScreen: {fileID: 0}
-  iPhone47inSplashScreen: {fileID: 0}
-  iPhone55inPortraitSplashScreen: {fileID: 0}
-  iPhone55inLandscapeSplashScreen: {fileID: 0}
-  iPadPortraitSplashScreen: {fileID: 0}
-  iPadHighResPortraitSplashScreen: {fileID: 0}
-  iPadLandscapeSplashScreen: {fileID: 0}
-  iPadHighResLandscapeSplashScreen: {fileID: 0}
+  iPhoneSplashScreen: {fileID: 2800000, guid: 0a658347b53924f29b61908d55dc69a5, type: 3}
+  iPhoneHighResSplashScreen: {fileID: 2800000, guid: 0a658347b53924f29b61908d55dc69a5,
+    type: 3}
+  iPhoneTallHighResSplashScreen: {fileID: 2800000, guid: 0a658347b53924f29b61908d55dc69a5,
+    type: 3}
+  iPhone47inSplashScreen: {fileID: 2800000, guid: 0a658347b53924f29b61908d55dc69a5,
+    type: 3}
+  iPhone55inPortraitSplashScreen: {fileID: 2800000, guid: 0a658347b53924f29b61908d55dc69a5,
+    type: 3}
+  iPhone55inLandscapeSplashScreen: {fileID: 2800000, guid: 0a658347b53924f29b61908d55dc69a5,
+    type: 3}
+  iPadPortraitSplashScreen: {fileID: 2800000, guid: 0a658347b53924f29b61908d55dc69a5,
+    type: 3}
+  iPadHighResPortraitSplashScreen: {fileID: 2800000, guid: 0a658347b53924f29b61908d55dc69a5,
+    type: 3}
+  iPadLandscapeSplashScreen: {fileID: 2800000, guid: 0a658347b53924f29b61908d55dc69a5,
+    type: 3}
+  iPadHighResLandscapeSplashScreen: {fileID: 2800000, guid: 0a658347b53924f29b61908d55dc69a5,
+    type: 3}
   appleTVSplashScreen: {fileID: 0}
   tvOSSmallIconLayers: []
   tvOSLargeIconLayers: []
@@ -237,7 +247,7 @@ PlayerSettings:
   - m_BuildTarget: 
     m_Icons:
     - serializedVersion: 2
-      m_Icon: {fileID: 2800000, guid: e1183a89093ec4214a8922ea46c5f7a7, type: 3}
+      m_Icon: {fileID: 2800000, guid: b6020893835254fba9f7fb4112daa64f, type: 3}
       m_Width: 128
       m_Height: 128
   m_BuildTargetBatching: []
