@@ -37,6 +37,8 @@ namespace CityMap.scripts
 				float minHeight = 0;
 
 				string heightDataKey = UIDataManager.Instance.MonthKeys[UIDataManager.Instance.TimeIndex];
+
+
 				if (feature.Properties.ContainsKey(heightDataKey))
 				{
 					if (float.TryParse(feature.Properties[heightDataKey].ToString(), out hf))
@@ -56,7 +58,8 @@ namespace CityMap.scripts
 
 				for (int i = 0; i < vertices.Length; i++)
 				{
-					if (vertices [i].y > minHeight) // Only recalculate height if vertex isn't on ground 
+					
+					if (vertices[i].y  > minHeight) // Only recalculate height if vertex isn't on ground 
 					{
 						vertices [i] = new Vector3 (vertices [i].x, hf, vertices [i].z);
 					}

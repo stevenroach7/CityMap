@@ -19,7 +19,7 @@ public class UIDataManager : Singleton<UIDataManager>
 	private List<string> createMonthKeyList() 
 	{
 		List<string> monthKeyList = new List<string>();
-		for (int year = 1997; year <= 2017; year++) 
+		for (int year = 1998; year <= 2017; year++) 
 		{
 			for (int month = 1; month <= 12; month++)
 			{

@@ -227,6 +227,7 @@ namespace Mapbox.Unity.MeshGeneration.Modifiers
 						GoModifiers[i].Run(_tempVectorEntity, tile);
 					}
 				}
+					
 				DynamicFeatureManager.Instance.featureDictionary[_tempVectorEntity.GameObject] = feature;
 			}
 

@@ -25,12 +25,11 @@ public class DynamicMaterialModifier : Singleton<DynamicMaterialModifier>
 		float maxDataValue = 100;
 
 		float dataValue = minDataValue;
-//		Material topMaterial = materials[0];
 		Material sideMaterial = materials[1];
 
 		if (properties.ContainsKey(sideColorDataKey) && properties.ContainsKey(heightDataKey)) 
 		{
-			if (float.TryParse(properties [sideColorDataKey].ToString (), out dataValue)) 
+			if (float.TryParse(properties[sideColorDataKey].ToString (), out dataValue)) 
 			{
 				float colorPercent = (dataValue - minDataValue) / (maxDataValue - minDataValue);
 				LABColor minColorVal = new LABColor(0f, 25f, -100f);
@@ -41,8 +40,11 @@ public class DynamicMaterialModifier : Singleton<DynamicMaterialModifier>
 		} 
 		else 
 		{
-			// TODO: set top material to missing data material
-//			topMaterial.SetColor("_Color", new Color(229f / 255f, 117f / 255f, 52f / 255f, 1f));
+//			materials[0] = new Material(sideMaterial.shader);
+//			// TODO: set top material to missing data material
+//			materials[0].SetColor("_Color", new Color(229f / 255f, 117f / 255f, 52f / 255f, 1f));
+//			materials [0].mainTexture = sideMaterial.mainTexture;
+//			materials = new Material[0];
 		}
 	}
 }

@@ -84,19 +84,22 @@ namespace Mapbox.Unity.MeshGeneration.Modifiers
 			{
 
 				string heightDataKey = UIDataManager.Instance.MonthKeys[UIDataManager.Instance.TimeIndex];
-				if (feature.Properties.ContainsKey(heightDataKey))
-				{
-					if (float.TryParse(feature.Properties[heightDataKey].ToString(), out hf))
-					{
+				if (feature.Properties.ContainsKey (heightDataKey)) {
+					if (float.TryParse (feature.Properties [heightDataKey].ToString (), out hf)) {
 						hf *= _scale;
 						//						Debug.Log ("Scale " + _scale);
 						hf *= _heightMultiplier;
-						if (feature.Properties.ContainsKey("min_height"))
-						{
-							minHeight = float.Parse(feature.Properties["min_height"].ToString()) * _scale;
+						if (feature.Properties.ContainsKey ("min_height")) {
+							minHeight = float.Parse (feature.Properties ["min_height"].ToString ()) * _scale;
 							hf -= minHeight;
 						}
+					} else {
+						hf = 0.0000001f;
 					}
+				} 
+				else 
+				{
+					hf = 0.0000001f;
 				}
 				if (feature.Properties.ContainsKey("ele"))
 				{
